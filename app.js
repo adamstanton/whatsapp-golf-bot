@@ -34,21 +34,6 @@ io.on('connection', function (client) {
 
 // render our home page
 app.use('/', routes);
-// handle a POST request to send a text message. 
-// This is sent via ajax on our home page
-app.post('/message', function(req, res, next) {
-  console.log('hello world');
-  // Use the REST client to send a text message
-  client.messages.create({
-    from: 'whatsapp:+14155238886',
-    body: 'Good luck on your Twilio quest!',
-    to: 'whatsapp:+447507467702'
-  }).then(function(message) {
-    // When we get a response from Twilio, respond to the HTTP POST request
-    res.send('Message is inbound!');
-  });
-});
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
