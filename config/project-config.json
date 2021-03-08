@@ -2,7 +2,7 @@
 {
         "user": "datalogin",
         "password": "_DATAm5t@system50",
-        "server": "https://scoring.mstworld.tv/",
+        "server": "http://scoring.mstworld.tv/",
         "database": "GolfDB",    
         "post_to_database": true,
         "options": {
