@@ -1,0 +1,33 @@
+3D:
+
+first:
+x: 988.379
+y: 748.592
+z: -2897.07
+
+last:
+x: 965.598
+y: -339.403
+z: 1355
+
+2D:
+[
+  {
+    "x": 166.109375,
+    "y": 469.5,
+    "name": "aa"
+  },
+  {
+    "x": 163.109375,
+    "y": 44.5,
+    "name": "bbb"
+  }
+]
+
+plans:
+- take 2 points, the start and end for example which are easy to pinpoint
+- measure distance between the two points in both 3D keyframe space and 2D map space
+- for every ball, measure the distance in the map2d space to the two points
+- get the relative distance to the ball
+- transform the relative distance to 3D space distances
+- this will yield the necessary coordinates

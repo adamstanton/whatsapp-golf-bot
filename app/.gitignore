@@ -1,0 +1,3 @@
+*.mp4
+/js/bundle.js
+node_modules

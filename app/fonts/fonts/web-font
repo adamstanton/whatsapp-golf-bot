@@ -1,0 +1,1343 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta charset='UTF-8' /><script type="text/javascript">window.NREUM||(NREUM={});NREUM.info = {"beacon":"bam.nr-data.net","errorBeacon":"bam.nr-data.net","licenseKey":"100417d399","applicationID":"2584098","transactionName":"NVBVMRMACEBYV0FaCwwacwoVLwNHeltbRxYNWVsAE042QVZQQFAQNVBVIw4PEhxwWlFWHA==","queueTime":0,"applicationTime":784,"ttGuid":"6F826887DB093632","agent":"js-agent.newrelic.com/nr-632.min.js"}</script><script type="text/javascript">(window.NREUM||(NREUM={})).loader_config={xpid:"VwEBUldXGwEFXFVSDgk="};window.NREUM||(NREUM={}),__nr_require=function(t,e,n){function r(n){if(!e[n]){var o=e[n]={exports:{}};t[n][0].call(o.exports,function(e){var o=t[n][1][e];return r(o?o:e)},o,o.exports)}return e[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var o=0;o<n.length;o++)r(n[o]);return r}({QJf3ax:[function(t,e){function n(t){function e(e,n,a){t&&t(e,n,a),a||(a={});for(var c=s(e),f=c.length,u=i(a,o,r),d=0;f>d;d++)c[d].apply(u,n);return u}function a(t,e){f[t]=s(t).concat(e)}function s(t){return f[t]||[]}function c(){return n(e)}var f={};return{on:a,emit:e,create:c,listeners:s,_events:f}}function r(){return{}}var o="nr@context",i=t("gos");e.exports=n()},{gos:"7eSDFh"}],ee:[function(t,e){e.exports=t("QJf3ax")},{}],3:[function(t){function e(t){try{i.console&&console.log(t)}catch(e){}}var n,r=t("ee"),o=t(1),i={};try{n=localStorage.getItem("__nr_flags").split(","),console&&"function"==typeof console.log&&(i.console=!0,-1!==n.indexOf("dev")&&(i.dev=!0),-1!==n.indexOf("nr_dev")&&(i.nrDev=!0))}catch(a){}i.nrDev&&r.on("internal-error",function(t){e(t.stack)}),i.dev&&r.on("fn-err",function(t,n,r){e(r.stack)}),i.dev&&(e("NR AGENT IN DEVELOPMENT MODE"),e("flags: "+o(i,function(t){return t}).join(", ")))},{1:23,ee:"QJf3ax"}],4:[function(t){function e(t,e,n,i,s){try{c?c-=1:r("err",[s||new UncaughtException(t,e,n)])}catch(f){try{r("ierr",[f,(new Date).getTime(),!0])}catch(u){}}return"function"==typeof a?a.apply(this,o(arguments)):!1}function UncaughtException(t,e,n){this.message=t||"Uncaught error with no additional information",this.sourceURL=e,this.line=n}function n(t){r("err",[t,(new Date).getTime()])}var r=t("handle"),o=t(6),i=t("ee"),a=window.onerror,s=!1,c=0;t("loader").features.err=!0,t(5),window.onerror=e;try{throw new Error}catch(f){"stack"in f&&(t(1),t(2),"addEventListener"in window&&t(3),window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)&&t(4),s=!0)}i.on("fn-start",function(){s&&(c+=1)}),i.on("fn-err",function(t,e,r){s&&(this.thrown=!0,n(r))}),i.on("fn-end",function(){s&&!this.thrown&&c>0&&(c-=1)}),i.on("internal-error",function(t){r("ierr",[t,(new Date).getTime(),!0])})},{1:10,2:9,3:7,4:11,5:3,6:24,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],5:[function(t){t("loader").features.ins=!0},{loader:"G9z0Bl"}],6:[function(t){function e(){}if(window.performance&&window.performance.timing&&window.performance.getEntriesByType){var n=t("ee"),r=t("handle"),o=t(1),i=t(2);t("loader").features.stn=!0,t(3),n.on("fn-start",function(t){var e=t[0];e instanceof Event&&(this.bstStart=Date.now())}),n.on("fn-end",function(t,e){var n=t[0];n instanceof Event&&r("bst",[n,e,this.bstStart,Date.now()])}),o.on("fn-start",function(t,e,n){this.bstStart=Date.now(),this.bstType=n}),o.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),this.bstType])}),i.on("fn-start",function(){this.bstStart=Date.now()}),i.on("fn-end",function(t,e){r("bstTimer",[e,this.bstStart,Date.now(),"requestAnimationFrame"])}),n.on("pushState-start",function(){this.time=Date.now(),this.startPath=location.pathname+location.hash}),n.on("pushState-end",function(){r("bstHist",[location.pathname+location.hash,this.startPath,this.time])}),"addEventListener"in window.performance&&(window.performance.addEventListener("webkitresourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.webkitClearResourceTimings()},!1),window.performance.addEventListener("resourcetimingbufferfull",function(){r("bstResource",[window.performance.getEntriesByType("resource")]),window.performance.clearResourceTimings()},!1)),document.addEventListener("scroll",e,!1),document.addEventListener("keypress",e,!1),document.addEventListener("click",e,!1)}},{1:10,2:9,3:8,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],7:[function(t,e){function n(t){i.inPlace(t,["addEventListener","removeEventListener"],"-",r)}function r(t){return t[1]}var o=(t(1),t("ee").create()),i=t(2)(o),a=t("gos");if(e.exports=o,n(window),"getPrototypeOf"in Object){for(var s=document;s&&!s.hasOwnProperty("addEventListener");)s=Object.getPrototypeOf(s);s&&n(s);for(var c=XMLHttpRequest.prototype;c&&!c.hasOwnProperty("addEventListener");)c=Object.getPrototypeOf(c);c&&n(c)}else XMLHttpRequest.prototype.hasOwnProperty("addEventListener")&&n(XMLHttpRequest.prototype);o.on("addEventListener-start",function(t){if(t[1]){var e=t[1];"function"==typeof e?this.wrapped=t[1]=a(e,"nr@wrapped",function(){return i(e,"fn-",null,e.name||"anonymous")}):"function"==typeof e.handleEvent&&i.inPlace(e,["handleEvent"],"fn-")}}),o.on("removeEventListener-start",function(t){var e=this.wrapped;e&&(t[1]=e)})},{1:24,2:25,ee:"QJf3ax",gos:"7eSDFh"}],8:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window.history,["pushState"],"-")},{1:25,2:24,ee:"QJf3ax"}],9:[function(t,e){var n=(t(2),t("ee").create()),r=t(1)(n);e.exports=n,r.inPlace(window,["requestAnimationFrame","mozRequestAnimationFrame","webkitRequestAnimationFrame","msRequestAnimationFrame"],"raf-"),n.on("raf-start",function(t){t[0]=r(t[0],"fn-")})},{1:25,2:24,ee:"QJf3ax"}],10:[function(t,e){function n(t,e,n){t[0]=o(t[0],"fn-",null,n)}var r=(t(2),t("ee").create()),o=t(1)(r);e.exports=r,o.inPlace(window,["setTimeout","setInterval","setImmediate"],"setTimer-"),r.on("setTimer-start",n)},{1:25,2:24,ee:"QJf3ax"}],11:[function(t,e){function n(){f.inPlace(this,p,"fn-")}function r(t,e){f.inPlace(e,["onreadystatechange"],"fn-")}function o(t,e){return e}function i(t,e){for(var n in t)e[n]=t[n];return e}var a=t("ee").create(),s=t(1),c=t(2),f=c(a),u=c(s),d=window.XMLHttpRequest,p=["onload","onerror","onabort","onloadstart","onloadend","onprogress","ontimeout"];e.exports=a,window.XMLHttpRequest=function(t){var e=new d(t);try{a.emit("new-xhr",[],e),u.inPlace(e,["addEventListener","removeEventListener"],"-",o),e.addEventListener("readystatechange",n,!1)}catch(r){try{a.emit("internal-error",[r])}catch(i){}}return e},i(d,XMLHttpRequest),XMLHttpRequest.prototype=d.prototype,f.inPlace(XMLHttpRequest.prototype,["open","send"],"-xhr-",o),a.on("send-xhr-start",r),a.on("open-xhr-start",r)},{1:7,2:25,ee:"QJf3ax"}],12:[function(t){function e(t){var e=this.params,r=this.metrics;if(!this.ended){this.ended=!0;for(var i=0;c>i;i++)t.removeEventListener(s[i],this.listener,!1);if(!e.aborted){if(r.duration=(new Date).getTime()-this.startTime,4===t.readyState){e.status=t.status;var a=t.responseType,f="arraybuffer"===a||"blob"===a||"json"===a?t.response:t.responseText,u=n(f);if(u&&(r.rxSize=u),this.sameOrigin){var d=t.getResponseHeader("X-NewRelic-App-Data");d&&(e.cat=d.split(", ").pop())}}else e.status=0;r.cbTime=this.cbTime,o("xhr",[e,r,this.startTime])}}}function n(t){if("string"==typeof t&&t.length)return t.length;if("object"!=typeof t)return void 0;if("undefined"!=typeof ArrayBuffer&&t instanceof ArrayBuffer&&t.byteLength)return t.byteLength;if("undefined"!=typeof Blob&&t instanceof Blob&&t.size)return t.size;if("undefined"!=typeof FormData&&t instanceof FormData)return void 0;try{return JSON.stringify(t).length}catch(e){return void 0}}function r(t,e){var n=i(e),r=t.params;r.host=n.hostname+":"+n.port,r.pathname=n.pathname,t.sameOrigin=n.sameOrigin}if(window.XMLHttpRequest&&XMLHttpRequest.prototype&&XMLHttpRequest.prototype.addEventListener&&!/CriOS/.test(navigator.userAgent)){t("loader").features.xhr=!0;var o=t("handle"),i=t(2),a=t("ee"),s=["load","error","abort","timeout"],c=s.length,f=t(1);t(4),t(3),a.on("new-xhr",function(){this.totalCbs=0,this.called=0,this.cbTime=0,this.end=e,this.ended=!1,this.xhrGuids={}}),a.on("open-xhr-start",function(t){this.params={method:t[0]},r(this,t[1]),this.metrics={}}),a.on("open-xhr-end",function(t,e){"loader_config"in NREUM&&"xpid"in NREUM.loader_config&&this.sameOrigin&&e.setRequestHeader("X-NewRelic-ID",NREUM.loader_config.xpid)}),a.on("send-xhr-start",function(t,e){var r=this.metrics,o=t[0],i=this;if(r&&o){var f=n(o);f&&(r.txSize=f)}this.startTime=(new Date).getTime(),this.listener=function(t){try{"abort"===t.type&&(i.params.aborted=!0),("load"!==t.type||i.called===i.totalCbs&&(i.onloadCalled||"function"!=typeof e.onload))&&i.end(e)}catch(n){try{a.emit("internal-error",[n])}catch(r){}}};for(var u=0;c>u;u++)e.addEventListener(s[u],this.listener,!1)}),a.on("xhr-cb-time",function(t,e,n){this.cbTime+=t,e?this.onloadCalled=!0:this.called+=1,this.called!==this.totalCbs||!this.onloadCalled&&"function"==typeof n.onload||this.end(n)}),a.on("xhr-load-added",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&!this.xhrGuids[n]&&(this.xhrGuids[n]=!0,this.totalCbs+=1)}),a.on("xhr-load-removed",function(t,e){var n=""+f(t)+!!e;this.xhrGuids&&this.xhrGuids[n]&&(delete this.xhrGuids[n],this.totalCbs-=1)}),a.on("addEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-added",[t[1],t[2]],e)}),a.on("removeEventListener-end",function(t,e){e instanceof XMLHttpRequest&&"load"===t[0]&&a.emit("xhr-load-removed",[t[1],t[2]],e)}),a.on("fn-start",function(t,e,n){e instanceof XMLHttpRequest&&("onload"===n&&(this.onload=!0),("load"===(t[0]&&t[0].type)||this.onload)&&(this.xhrCbStart=(new Date).getTime()))}),a.on("fn-end",function(t,e){this.xhrCbStart&&a.emit("xhr-cb-time",[(new Date).getTime()-this.xhrCbStart,this.onload,e],e)})}},{1:"XL7HBI",2:13,3:11,4:7,ee:"QJf3ax",handle:"D5DuLP",loader:"G9z0Bl"}],13:[function(t,e){e.exports=function(t){var e=document.createElement("a"),n=window.location,r={};e.href=t,r.port=e.port;var o=e.href.split("://");return!r.port&&o[1]&&(r.port=o[1].split("/")[0].split("@").pop().split(":")[1]),r.port&&"0"!==r.port||(r.port="https"===o[0]?"443":"80"),r.hostname=e.hostname||n.hostname,r.pathname=e.pathname,r.protocol=o[0],"/"!==r.pathname.charAt(0)&&(r.pathname="/"+r.pathname),r.sameOrigin=!e.hostname||e.hostname===document.domain&&e.port===n.port&&e.protocol===n.protocol,r}},{}],14:[function(t,e){function n(t){return function(){r(t,[(new Date).getTime()].concat(i(arguments)))}}var r=t("handle"),o=t(1),i=t(2);"undefined"==typeof window.newrelic&&(newrelic=window.NREUM);var a=["setPageViewName","addPageAction","setCustomAttribute","finished","addToTrace","inlineHit","noticeError"];o(a,function(t,e){window.NREUM[e]=n("api-"+e)}),e.exports=window.NREUM},{1:23,2:24,handle:"D5DuLP"}],"7eSDFh":[function(t,e){function n(t,e,n){if(r.call(t,e))return t[e];var o=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(t,e,{value:o,writable:!0,enumerable:!1}),o}catch(i){}return t[e]=o,o}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],gos:[function(t,e){e.exports=t("7eSDFh")},{}],handle:[function(t,e){e.exports=t("D5DuLP")},{}],D5DuLP:[function(t,e){function n(t,e,n){return r.listeners(t).length?r.emit(t,e,n):(o[t]||(o[t]=[]),void o[t].push(e))}var r=t("ee").create(),o={};e.exports=n,n.ee=r,r.q=o},{ee:"QJf3ax"}],id:[function(t,e){e.exports=t("XL7HBI")},{}],XL7HBI:[function(t,e){function n(t){var e=typeof t;return!t||"object"!==e&&"function"!==e?-1:t===window?0:i(t,o,function(){return r++})}var r=1,o="nr@id",i=t("gos");e.exports=n},{gos:"7eSDFh"}],G9z0Bl:[function(t,e){function n(){var t=p.info=NREUM.info,e=f.getElementsByTagName("script")[0];if(t&&t.licenseKey&&t.applicationID&&e){s(d,function(e,n){e in t||(t[e]=n)});var n="https"===u.split(":")[0]||t.sslForHttp;p.proto=n?"https://":"http://",a("mark",["onload",i()]);var r=f.createElement("script");r.src=p.proto+t.agent,e.parentNode.insertBefore(r,e)}}function r(){"complete"===f.readyState&&o()}function o(){a("mark",["domContent",i()])}function i(){return(new Date).getTime()}var a=t("handle"),s=t(1),c=(t(2),window),f=c.document,u=(""+location).split("?")[0],d={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-632.min.js"},p=e.exports={offset:i(),origin:u,features:{}};f.addEventListener?(f.addEventListener("DOMContentLoaded",o,!1),c.addEventListener("load",n,!1)):(f.attachEvent("onreadystatechange",r),c.attachEvent("onload",n)),a("mark",["firstbyte",i()])},{1:23,2:14,handle:"D5DuLP"}],loader:[function(t,e){e.exports=t("G9z0Bl")},{}],23:[function(t,e){function n(t,e){var n=[],o="",i=0;for(o in t)r.call(t,o)&&(n[i]=e(o,t[o]),i+=1);return n}var r=Object.prototype.hasOwnProperty;e.exports=n},{}],24:[function(t,e){function n(t,e,n){e||(e=0),"undefined"==typeof n&&(n=t?t.length:0);for(var r=-1,o=n-e||0,i=Array(0>o?0:o);++r<o;)i[r]=t[e+r];return i}e.exports=n},{}],25:[function(t,e){function n(t){return!(t&&"function"==typeof t&&t.apply&&!t[i])}var r=t("ee"),o=t(1),i="nr@wrapper",a=Object.prototype.hasOwnProperty;e.exports=function(t){function e(t,e,r,a){function nrWrapper(){var n,i,s,f;try{i=this,n=o(arguments),s=r&&r(n,i)||{}}catch(d){u([d,"",[n,i,a],s])}c(e+"start",[n,i,a],s);try{return f=t.apply(i,n)}catch(p){throw c(e+"err",[n,i,p],s),p}finally{c(e+"end",[n,i,f],s)}}return n(t)?t:(e||(e=""),nrWrapper[i]=!0,f(t,nrWrapper),nrWrapper)}function s(t,r,o,i){o||(o="");var a,s,c,f="-"===o.charAt(0);for(c=0;c<r.length;c++)s=r[c],a=t[s],n(a)||(t[s]=e(a,f?s+o:o,i,s))}function c(e,n,r){try{t.emit(e,n,r)}catch(o){u([o,e,n,r])}}function f(t,e){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(t);return n.forEach(function(n){Object.defineProperty(e,n,{get:function(){return t[n]},set:function(e){return t[n]=e,e}})}),e}catch(r){u([r])}for(var o in t)a.call(t,o)&&(e[o]=t[o]);return e}function u(e){try{t.emit("internal-error",e)}catch(n){}}return t||(t=r),e.inPlace=s,e.flag=i,e}},{1:24,ee:"QJf3ax"}]},{},["G9z0Bl",4,12,6,5]);</script>
+
+<title>Bank Gothic Medium - web font - Fonts.com</title>
+<meta property="og:title" content="Bank Gothic Medium - web font"/>
+<meta property="og:site_name" content="Fonts.com"/>
+<meta property="og:type" content="website"/>
+
+<meta property="og:locale" content="en_US" />          
+<meta property="og:locale:alternate" content="de_DE" />
+<meta property="og:locale:alternate" content="ja_JP" />
+
+
+<meta name="description" content="Buy Bank Gothic Medium web font from Bitstream on Fonts.com."/>
+<meta property="og:description" content="Buy Bank Gothic Medium web font from Bitstream on Fonts.com." />
+
+<link rel="canonical" href="http://www.fonts.com/font/bitstream/bank-gothic/medium/web-font"/>
+<meta property="og:url" content="http://www.fonts.com/font/bitstream/bank-gothic/medium/web-font"/>
+
+<meta name="google-site-verification" content="Epy10cFBjEtTHGZus2pffdatlnPJu7kSrMd8ekrwgyQ" />
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=1010" />
+<meta name="msapplication-TileColor" content="#da532c">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png">
+
+
+<link rel="apple-touch-icon" sizes="57x57" href="//fast.fonts.net/FontsCom/Live/static/Content/img/apple-touch-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="114x114" href="//fast.fonts.net/FontsCom/Live/static/Content/img/apple-touch-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="72x72" href="//fast.fonts.net/FontsCom/Live/static/Content/img/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="144x144" href="//fast.fonts.net/FontsCom/Live/static/Content/img/apple-touch-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="60x60" href="//fast.fonts.net/FontsCom/Live/static/Content/img/apple-touch-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="120x120" href="//fast.fonts.net/FontsCom/Live/static/Content/img/apple-touch-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="76x76" href="//fast.fonts.net/FontsCom/Live/static/Content/img/apple-touch-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="152x152" href="//fast.fonts.net/FontsCom/Live/static/Content/img/apple-touch-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="//fast.fonts.net/FontsCom/Live/static/Content/img/apple-touch-icon-180x180.png">
+<link rel="icon" type="image/png" href="//fast.fonts.net/FontsCom/Live/static/Content/img/favicon-192x192.png" sizes="192x192">
+<link rel="icon" type="image/png" href="//fast.fonts.net/FontsCom/Live/static/Content/img/favicon-160x160.png" sizes="160x160">
+<link rel="icon" type="image/png" href="//fast.fonts.net/FontsCom/Live/static/Content/img/favicon-96x96.png" sizes="96x96">
+<link rel="icon" type="image/png" href="//fast.fonts.net/FontsCom/Live/static/Content/img/favicon-16x16.png" sizes="16x16">
+<link rel="icon" type="image/png" href="//fast.fonts.net/FontsCom/Live/static/Content/img/favicon-32x32.png" sizes="32x32">
+    
+    
+<!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<link href="//fast.fonts.net/cssapi/7492f661-79f4-4ab2-90f2-6a9eaf984a75.css" rel="stylesheet" />
+
+<!-- CssReference.cshtml -->
+    <!--[if !(lte IE 9)]> <!-- -->
+       <link href="//fast.fonts.net/FontsCom/Live/static/Content/css/min/modern.cdn.2.10.796.33297.css" rel="stylesheet" />
+    <!-- <![endif] -->
+    <!--[if lt IE 8]>
+        <link href="//fast.fonts.net/FontsCom/Live/static/Content/css/min/ie.cdn.2.10.796.33297.css" rel="stylesheet" />
+    <![endif]-->
+    <!--[if IE 8]>
+        <link href="//fast.fonts.net/FontsCom/Live/static/Content/css/min/ie8bless-blessed2.cdn.2.10.796.33297.css" rel="stylesheet" />
+        <link href="//fast.fonts.net/FontsCom/Live/static/Content/css/min/ie8bless-blessed1.cdn.2.10.796.33297.css" rel="stylesheet" />
+        <link href="//fast.fonts.net/FontsCom/Live/static/Content/css/min/ie8bless.cdn.2.10.796.33297.css" rel="stylesheet" />
+        <link href="//fast.fonts.net/FontsCom/Live/static/Content/css/min/print.cdn.2.10.796.33297.css" rel="stylesheet" media="print" />
+    <![endif]-->
+    <!--[if IE 9]>
+        <link href="//fast.fonts.net/FontsCom/Live/static/Content/css/min/ie9bless-blessed2.cdn.2.10.796.33297.css" rel="stylesheet" />
+        <link href="//fast.fonts.net/FontsCom/Live/static/Content/css/min/ie9bless-blessed1.cdn.2.10.796.33297.css" rel="stylesheet" />
+        <link href="//fast.fonts.net/FontsCom/Live/static/Content/css/min/ie9bless.cdn.2.10.796.33297.css" rel="stylesheet" />
+        <link href="//fast.fonts.net/FontsCom/Live/static/Content/css/min/print.cdn.2.10.796.33297.css" rel="stylesheet" media="print" />
+
+    <![endif]-->
+
+    
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Bank Gothic Medium">
+<meta name="twitter:description" content="Buy Bank Gothic Medium web font from Bitstream on Fonts.com.">
+<meta name="twitter:image" content="http://cdnbadge.fonts.net/c/130/1082554.gif">
+<meta name="twitter:site" content="@fontscom">        <script type="text/javascript">
+            var showMoreCategories = false;
+            var showMoreKeywords = false;
+            var showMoreSupportedLanguages = false;
+        </script>
+
+
+     
+
+     
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/Scripts/jquery.min.js?v=1.8">\x3C/script>')</script>
+</head>
+
+<body class="layout-c  style-blue culture-code-en  USD" itemscope itemtype="http://schema.org/WebPage">
+    	<script>
+    var dataLayer = dataLayer || [];
+    dataLayer = [{
+      'GA Web Property ID': 'UA-644138-1',
+      'GA Use Debug': ('False' === 'True') ? true : false
+    }];
+  	</script>
+
+	<!-- Start Google Tag Manager -->
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-NBPPXL"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-NBPPXL');</script>
+    <!-- End Google Tag Manager -->
+
+    
+    <p class="move"><a href="#skip">Skip to main content</a></p>
+
+    
+<header role="banner">
+    <div class="account-wrap">
+	    <div class="wrap">
+            <nav class="account-nav">
+                <ul>
+                    <li>
+ 
+<a class="trigger member-sections-trigger" href="/secure/sign-in" id="member-signin-link" rel="nofollow">
+    <b class="ss-dropdown right-icon">Member Sign In</b>
+</a>
+<div class="member-signin-section-wrapper member-section" style="display:none;"></div></li>
+                    <li>
+
+<a class="trigger member-sections-trigger" href="/secure/become-a-member" id="become-member-link" rel="nofollow">
+    <b class="ss-dropdown right-icon">Become A Member</b>
+</a>
+<div class="become-member-section-wrapper member-section" style="display:none;"></div></li>
+                    <li>
+
+<a class="trigger need-support-sections-trigger" href="/secure/support" id="need-support-link" rel="nofollow">
+    <b class="ss-dropdown right-icon">Need Support?</b>
+</a>
+<div class="need-support-section-wrapper member-section-need-support" style="display:none;"></div></li>
+                </ul>
+            </nav>
+            <nav class="cart-nav">
+                <div id="cart-floating-nav-container">
+                    
+
+<ul>
+    
+
+    <li>
+        
+
+<a class="trigger" href="/content/select-language" title="Choose Your Language"><b class="ss-dropdown right-icon">English</b></a>
+
+<section class="hovered hovered-lang">
+
+    <h1>Select Your Language</h1>
+
+    <p>Fonts.com is currently in English</p>
+    <ul>
+                <li>English</li>
+                    <li><a href="/language/change-language/de-de">Deutsch</a></li>
+                    <li><a href="/language/change-language/ja-jp">日本語</a></li>
+    </ul>
+
+    <a class="close" onclick="">Close</a>
+
+</section>
+
+
+    </li>
+    
+
+    <li class="nav-cart">
+        
+
+<a class="trigger mini-cart-sections-trigger ss-emptycart" id="cart-show-hide-link">
+    <b class="ss-dropdown right-icon"><span class="move">Items In Your Cart:</span>0</b>
+</a>
+
+<div class="mini-cart-section-wrapper member-section-mini-cart" style="display:none;"></div>
+
+
+    </li>
+    <li class="nav-checkout">
+    </li>
+</ul>
+
+
+<input id="ReloadCartPage" name="ReloadCartPage" type="hidden" value="True" />    
+<input type="hidden" id="ProjectVariationsAlreadyInCart" value="{}" />
+
+                </div>
+            </nav>
+	    </div>
+    </div>
+
+
+
+
+<div class="logo-wrap">
+    <div class="wrap">
+        <h1><a class="logo" href="/">fonts.com</a>
+        </h1>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="/browse">Browse Fonts</a></li>
+                <li><a href="/browse/promotions">Promotions</a></li>
+                <li>
+                        <a href="http://www.fonts.com/web-fonts">Web Fonts</a>
+                </li>
+                <li>
+                    <a href="/web-fonts/plans-and-pricing">Plans</a>
+                </li>
+                <li><a href="http://www.fonts.com/content/learning">Learning</a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+</header>
+
+<div>
+    <div class="wrap">
+        <div class="social">
+            
+<ul class="share-bar">
+    <li class="facebook">
+        <a 
+        href="https://www.facebook.com/sharer/sharer.php?u=http://www.fonts.com/font/bitstream/bank-gothic/medium/web-font" 
+        class="webicon facebook small"
+        title="Share on Facebook">Facebook</a>
+    </li>
+    <li class="twitter">
+        <a
+        href="https://twitter.com/intent/tweet?url=http://www.fonts.com/font/bitstream/bank-gothic/medium/web-font&via=fontscom&text=Bank Gothic Medium - web font - Fonts.com" 
+        title="Share on Twitter"
+        class="webicon twitter small"
+        target="_blank">Twitter</a>
+    </li>
+    <li class="googleplus">
+        <a
+        href="https://plus.google.com/share?url=http://www.fonts.com/font/bitstream/bank-gothic/medium/web-font" 
+        title="Share on Google Plus"
+        target="_blank"
+        class="webicon googleplus small">Google+</a>
+    </li>
+    <li class="email">
+        <a
+        href="mailto:?subject=Fonts.com&body=http%3a%2f%2fwww.fonts.com%2ffont%2fbitstream%2fbank-gothic%2fmedium%2fweb-font" 
+        class="webicon mail small"
+        title="Share via e-mail">Email</a>
+    </li>
+</ul>
+        </div>
+    </div>
+</div>
+    
+
+        <div class="breadcrumb-wrap">
+            <div class="wrap">
+                           
+<ul class="breadcrumbs" itemprop="breadcrumb">
+             <li><a href="/">Home</a></li> 
+             <li><a href="/font/bitstream">Bitstream</a></li> 
+             <li><a href="/font/bitstream/bank-gothic?isRatingExpanded=False">Bank Gothic</a></li> 
+             <li>Bank Gothic Medium</li> 
+</ul>
+
+                
+       
+
+<form action="/search/all-fonts" class="search-form" id="search" method="get" role="search">	<p>
+		<label for="searchtext" class="move ss-dropdown right-icon">Search for:</label>
+		<input type="search" id="searchtext" name="searchtext" value="" autocomplete="off" tabindex="1"/>
+		<label for="SearchIn" class="move">Search in:</label>
+		<span class="ss-search">
+		    <input type="submit" class="btn" value="Search"tabindex="2" />
+		    <select style="visibility: hidden;" name="SearchIn" id="SearchIn" >
+		            <option value="all-fonts" selected="selected" data-search-action="/search/all-fonts">All Fonts</option>
+		            <option value="web-fonts"  data-search-action="/search/web-fonts">Web Fonts</option>
+		            <option value="articles"  data-search-action="/search/articles">Articles</option>
+		    </select>
+		</span>
+	</p>
+</form>
+            </div>
+        </div> 
+    
+    
+
+
+    
+    
+    
+    
+
+<div class="content">
+	<div class="wrap">
+
+		<header class="page-header ">
+            
+            
+        <h1>Bank Gothic Medium</h1>
+
+
+
+<ul class="details">
+
+        <li>
+            <strong>Designer:</strong>
+                        <a href="/browse/designers/morris-fuller-benton" title="Morris Fuller Benton">Morris Fuller Benton</a>
+         </li>
+    
+        <li>
+            <strong>Design foundry:</strong>
+<a href="/font/bitstream" title="Bitstream">Bitstream</a>        </li>
+    
+        <li>
+            <strong>Source:</strong>
+<a href="/font/bitstream" title="Bitstream">Bitstream</a>        </li>
+    
+</ul>
+
+		</header>
+		<div class="main" role="main" id="skip">
+            
+            
+
+
+
+    <div class="tabs-content">
+        
+
+<dl class="tabs" data-tab data-options="deep-linking: true">
+    <dd class="active"><a href="#specimens">
+        Specimens
+    </a></dd>
+    <dd><a href="#try-it-out" id="try-it-out-tab">
+        Try it
+    </a></dd>
+    <dd><a href="#waterfall">
+        Waterfall
+    </a></dd>
+    <dd>
+        <a href="#character-map" 
+            data-action="load-character-map" 
+            data-productVariationId= 1118796 
+            data-languageCode = en-US 
+            data-urlKey = bitstream/bank-gothic/medium 
+            data-productId = 1082562 
+            data-familyId = 1082554 
+            data-selectedProductVariationId = 1118796 
+            data-characterMapTableRowsCount = 0 
+            data-characterMapTableColumnsCount = 0
+            data-loadWebFontsCharacterMap = True>
+        Character Map
+    </a>
+    </dd>
+    <dd><a href="#browser-preview">
+        Web Font
+    </a></dd>
+    <dd><a href="//typecast.com/preview/fontscom/1082554:1118796?plan=" target="_blank" onclick="window.open('//typecast.com/preview/fontscom/1082554:1118796?plan=');">
+        Try it in Typecast
+    </a></dd>
+</dl>
+
+
+
+
+        <div id="specimens" class="content with-carousel active">
+            
+
+	<div class="carousel">
+
+		
+        
+
+
+            <ul class="carousel-content">
+                <li style="width:770px; height:280px;"><img style="width:770px; height:280px;" alt="" data-image-src="http://cdnimg.fonts.net/CatalogImages/23/1082562.png" src="http://cdnimg.fonts.net/CatalogImages/23/1082562.png"></li>
+
+            </ul>
+
+        <ul class="carousel-controls minimized-carousel-controls" style="display: none;">
+            <li class="show-hide"><a href="#" class="ss-directup"></a></li>
+	    </ul>
+
+        <ul class="carousel-controls full-carousel-controls">
+	            <li class="control"><a onclick=""><img width="51" height="44" alt="" src="http://cdnimg.fonts.net/CatalogImages/24/1082562.png"></a></li>
+	        <li class="add">
+	            <a class="ss-plus" data-ajax="true" data-ajax-method="GET" data-ajax-success="Fonts.Products.ShowSubmitSpecimenDialogForm(data);" href="/other/carousel/submitspecimendialogform?fontFamilyId=1082554&amp;productId=1082562" rel="nofollow" title="Submit an image">Add</a>
+	        </li>
+	        <li class="show-hide"><a href="#" class="ss-dropdown"></a></li>
+	    </ul>
+        
+	    
+
+        <div class="form-container"></div>
+
+	</div>
+
+        </div>
+    
+        <div id="try-it-out" class="content try-it-out">
+            
+
+
+<p><strong>Try this web font now!</strong> Simply edit the sample text below or change colors and size.</p>
+
+<form action="/other/productwebfont/variationsampleimage" class="products-webfont-sample" method="post">    <div class="search-features clearfix">
+        <div class="search-fontsize">
+            <p>Font Size:</p>
+            <select name="font-size" class="adorn">
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="13">13</option>
+                <option value="14">14</option>
+                <option value="16">16</option>
+                <option value="18">18</option>
+                <option value="24">24</option>
+                <option value="32" selected="selected">32</option>
+                <option value="48">48</option>
+                <option value="64">64</option>
+                <option value="72">72</option>
+                <option value="96">96</option>
+            </select>
+        </div>
+
+        <div class="search-textcolor foregroundSelector">
+            <p>Text Color:</p>
+            <div class="selectorSwitch"></div>
+            <div class="colorPalette" style="display: none;"></div>
+            <input type="hidden" name="colorpicker-foreground" class="colorpicker-foreground" value="000000" />
+        </div>
+
+        <div class="search-bgcolor backgroundSelector">
+            <p>Background:</p>
+            <div class="selectorSwitch"></div>
+            <div class="colorPalette" style="display: none;"></div>
+            <input type="hidden" name="colorpicker-background" class="colorpicker-background" value="ffffff" />
+        </div>
+     
+    </div>
+    <div id="dev-opentype-features-container" class="search-featuredicons font-features-section" style="display: none;"></div>
+</form>
+
+
+           
+ 
+
+<div id="6c866819751e4e9494ac9d87c61eee95" data-win-menu-name="Bank Gothic W01 Medium" class="web-fonts-preview web-fonts-correction" style="font-family: &#39;Bank Gothic W01 Medium&#39;;">
+            <textarea data-enable-subsetting="False">Quick Brown Fox Jumped Over The Lazy Dog</textarea>
+    
+        <div id="6c866819751e4e9494ac9d87c61eee95-d" style="display: none;">@font-face{font-family:"Bank Gothic W01 Medium";src:url("http://fast.fonts.net/dv2/2/d5c9f6f3-c676-4d64-a7ce-5d51cc7ddd40.eot?d44f19a684109620e484147fa790e81859e92aaaea3d337f84586d5df8888fe5455f55e0f83ed0be044ddfaa95e824a4b1318d5b552aaa24a44025e9&projectid=74f39a9d-a5dc-405f-9690-1c1fd4590ae4");src:url("http://fast.fonts.net/dv2/2/d5c9f6f3-c676-4d64-a7ce-5d51cc7ddd40.eot?d44f19a684109620e484147fa790e81859e92aaaea3d337f84586d5df8888fe5455f55e0f83ed0be044ddfaa95e824a4b1318d5b552aaa24a44025e9&projectid=74f39a9d-a5dc-405f-9690-1c1fd4590ae4#iefix") format("embedded-opentype"),url("http://fast.fonts.net/dv2/14/9a097577-0382-49c0-9e7d-d967c28909e0.woff2?d44f19a684109620e484147fa790e81859e92aaaea3d337f84586d5df8888fe5455f55e0f83ed0be044ddfaa95e824a4b1318d5b552aaa24a44025e9&projectid=74f39a9d-a5dc-405f-9690-1c1fd4590ae4") format("woff2"),url("http://fast.fonts.net/dv2/3/bec343c9-a262-4ca1-8540-912ccd59580d.woff?d44f19a684109620e484147fa790e81859e92aaaea3d337f84586d5df8888fe5455f55e0f83ed0be044ddfaa95e824a4b1318d5b552aaa24a44025e9&projectid=74f39a9d-a5dc-405f-9690-1c1fd4590ae4") format("woff"),url("http://fast.fonts.net/dv2/1/f7218b41-56c3-4ff8-b799-f06e7e0c061c.ttf?d44f19a684109620e484147fa790e81859e92aaaea3d337f84586d5df8888fe5455f55e0f83ed0be044ddfaa95e824a4b1318d5b552aaa24a44025e9&projectid=74f39a9d-a5dc-405f-9690-1c1fd4590ae4") format("truetype"),url("http://fast.fonts.net/dv2/11/12229708-f75b-43f6-85c2-4ef8e58d975d.svg?d44f19a684109620e484147fa790e81859e92aaaea3d337f84586d5df8888fe5455f55e0f83ed0be044ddfaa95e824a4b1318d5b552aaa24a44025e9&projectid=74f39a9d-a5dc-405f-9690-1c1fd4590ae4#12229708-f75b-43f6-85c2-4ef8e58d975d") format("svg");}
+</div>  
+</div>
+        </div>
+
+        <div id="waterfall" class="content waterfall">
+            
+
+
+<p><strong>Try this web font now!</strong> Enter your text and click the 'Change Sample Text' button.</p>
+
+<form action="/other/productwebfont/variationsampleimage" class="products-webfont-waterfall" method="post">        <p class="input-wrap">
+            <label for="sample-text" class="move">Sample Text</label>
+            <textarea id="sample-text" name="sample-text">Quick Brown Fox Jumped Over The Lazy Dog</textarea>
+        </p>
+        <p class="submit">
+            <input class="input-action" type="submit" value="Change Sample Text" />
+        </p>
+</form>    
+
+
+
+<div id="webfont-waterfall">
+        
+        <div>
+            <span class="level-size">72</span>
+            <span class="level-content" style="font-size: 72px; font-family:  'Bank Gothic W01 Medium';">
+                <span data-default="Quick Brown Fox Jumped Over The Lazy Dog" class="webfont-waterfall-sample">Quick Brown Fox Jumped Over The Lazy Dog</span>
+            </span>
+        </div>
+        <div>
+            <span class="level-size">60</span>
+            <span class="level-content" style="font-size: 60px; font-family:  'Bank Gothic W01 Medium';">
+                <span data-default="Quick Brown Fox Jumped Over The Lazy Dog" class="webfont-waterfall-sample">Quick Brown Fox Jumped Over The Lazy Dog</span>
+            </span>
+        </div>
+        <div>
+            <span class="level-size">48</span>
+            <span class="level-content" style="font-size: 48px; font-family:  'Bank Gothic W01 Medium';">
+                <span data-default="Quick Brown Fox Jumped Over The Lazy Dog" class="webfont-waterfall-sample">Quick Brown Fox Jumped Over The Lazy Dog</span>
+            </span>
+        </div>
+        <div>
+            <span class="level-size">36</span>
+            <span class="level-content" style="font-size: 36px; font-family:  'Bank Gothic W01 Medium';">
+                <span data-default="Quick Brown Fox Jumped Over The Lazy Dog" class="webfont-waterfall-sample">Quick Brown Fox Jumped Over The Lazy Dog</span>
+            </span>
+        </div>
+        <div>
+            <span class="level-size">24</span>
+            <span class="level-content" style="font-size: 24px; font-family:  'Bank Gothic W01 Medium';">
+                <span data-default="Quick Brown Fox Jumped Over The Lazy Dog" class="webfont-waterfall-sample">Quick Brown Fox Jumped Over The Lazy Dog</span>
+            </span>
+        </div>
+        <div>
+            <span class="level-size">18</span>
+            <span class="level-content" style="font-size: 18px; font-family:  'Bank Gothic W01 Medium';">
+                <span data-default="Quick Brown Fox Jumped Over The Lazy Dog" class="webfont-waterfall-sample">Quick Brown Fox Jumped Over The Lazy Dog</span>
+            </span>
+        </div>
+        <div>
+            <span class="level-size">14</span>
+            <span class="level-content" style="font-size: 14px; font-family:  'Bank Gothic W01 Medium';">
+                <span data-default="Quick Brown Fox Jumped Over The Lazy Dog" class="webfont-waterfall-sample">Quick Brown Fox Jumped Over The Lazy Dog</span>
+            </span>
+        </div>
+        <div>
+            <span class="level-size">12</span>
+            <span class="level-content" style="font-size: 12px; font-family:  'Bank Gothic W01 Medium';">
+                <span data-default="Quick Brown Fox Jumped Over The Lazy Dog" class="webfont-waterfall-sample">Quick Brown Fox Jumped Over The Lazy Dog</span>
+            </span>
+        </div>
+        <div>
+            <span class="level-size">10</span>
+            <span class="level-content" style="font-size: 10px; font-family:  'Bank Gothic W01 Medium';">
+                <span data-default="Quick Brown Fox Jumped Over The Lazy Dog" class="webfont-waterfall-sample">Quick Brown Fox Jumped Over The Lazy Dog</span>
+            </span>
+        </div>
+        <div>
+            <span class="level-size">8</span>
+            <span class="level-content" style="font-size: 8px; font-family:  'Bank Gothic W01 Medium';">
+                <span data-default="Quick Brown Fox Jumped Over The Lazy Dog" class="webfont-waterfall-sample">Quick Brown Fox Jumped Over The Lazy Dog</span>
+            </span>
+        </div>
+
+</div>
+
+        </div>
+    
+        <div id="character-map" class="content character-map">
+        </div>
+
+        <div id="browser-preview" class="content browser-preview">
+            
+
+
+<div id="browserPreviewWrapper">
+
+    
+
+<div id="browserPreviewControl">
+<form action="/other/productwebfont/webfontbrowsersbyosid" data-ajax="true" data-ajax-begin="$(&#39;#browserPreviewImage&#39;).showLoading();" data-ajax-method="POST" data-ajax-success="Fonts.Products.updateBrowserList" id="browser-list-request-form" method="post"><input id="preselectOnReload" name="preselectOnReload" type="hidden" value="first" />    <div id="osSelector">
+	    
+
+<select class="adorn" name="osId" onchange="$('#browser-list-request-form').submit();">
+        <option class="windows-xp" value="1">Windows XP</option>
+        <option class="windows-7" value="3">Windows 7</option>
+        <option class="windows-8" value="5">Windows 8</option>
+        <option class="mac-os-x" value="6">Mac OS X</option>
+</select>
+    </div>
+</form><form action="/other/productwebfont/webfontbrowserpreviewimage" data-ajax="true" data-ajax-begin="$(&#39;#browserPreviewImage&#39;).showLoading();" data-ajax-method="POST" data-ajax-success="Fonts.Products.updateBrowserPreviewImage" id="browser-preview-image-request-form" method="post"><input data-val="true" data-val-number="The field VariationId must be a number." data-val-required="The VariationId field is required." id="variationId" name="variationId" type="hidden" value="1118796" />    <div id="browserSelector">
+        
+
+<select class="adorn" name="osBrowserId"  onchange="$('#browser-preview-image-request-form').submit();">
+        <option class="internet-explorer" value="1">Internet Explorer</option>
+        <option class="firefox" value="2">Firefox</option>
+        <option class="chrome" value="3">Chrome</option>
+</select>
+    </div>
+</form>    <div id="browserPreviewPager">
+        <input type="image" src="//fast.fonts.net/FontsCom/Live/static/Content/img/browser-nav-left-arrow.png" name="browser-preview-previous" />
+        <input type="image" src="//fast.fonts.net/FontsCom/Live/static/Content/img/browser-nav-right-arrow.png" name="browser-preview-next" />
+    </div>
+    <hr class="separator" />
+</div>
+
+<div id="browserPreviewImage">
+    
+
+<img alt="" src="http://browsersamplescdn.fonts.com/v2/1/1118796-1-1.png" />
+</div>
+
+
+
+
+</div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+    <section class="accord-group">
+		<a class="accord-bar" onclick=""><h1 class="ss-dropdown">Technical Details</h1></a>
+        <div class="pairing alt-pairing" style="display: block;">
+            <h4>Current Product Technical Details</h4>
+            <table class="technical-details-table">
+                <tr><td class="table-row-name">Format:</td><td>Latin 1</td></tr>
+                <tr><td class="table-row-name">Character Count:</td><td>223</td></tr>
+                <tr><td class="table-row-name">CSS Name:</td><td>Bank Gothic W01 Medium</td></tr>
+            </table>
+                <h4>Available Web Font Formats</h4>
+                    <table class="technical-details-table">
+                        <tr><td class="table-row-name">Format:</td><td>SVG</td></tr>
+                        <tr><td class="table-row-name">File Size:</td><td>66.72 Kb</td></tr>
+                        <tr><td class="table-row-name">Browsers:</td><td class="font-features-section">        <ul class="with-popup">
+            <li>
+                <a onclick="" class="textpopper"><img alt="Chrome" class="browser-icon" src="http://cdncms.fonts.net/browsers/browser-chrome.png" /></a>
+                <span class="popup">SVG is supported in Chrome versions 3+</span>
+            </li>
+            <li>
+                <a onclick="" class="textpopper"><img alt="Opera" class="browser-icon" src="http://cdncms.fonts.net/browsers/browser-opera.png" /></a>
+                <span class="popup">SVG is supported in Opera versions 9+</span>
+            </li>
+            <li>
+                <a onclick="" class="textpopper"><img alt="Safari" class="browser-icon" src="http://cdncms.fonts.net/browsers/browser-safari.png" /></a>
+                <span class="popup">SVG is supported in Safari versions 3.2+</span>
+            </li>
+        </ul>
+</td></tr>
+                    </table>
+                    <table class="technical-details-table">
+                        <tr><td class="table-row-name">Format:</td><td>EOT</td></tr>
+                        <tr><td class="table-row-name">File Size:</td><td>15.12 Kb</td></tr>
+                        <tr><td class="table-row-name">Browsers:</td><td class="font-features-section">        <ul class="with-popup">
+            <li>
+                <a onclick="" class="textpopper"><img alt="Internet Explorer" class="browser-icon" src="http://cdncms.fonts.net/browsers/browser-ie.png" /></a>
+                <span class="popup">EOT is supported in Internet Explorer versions 4+</span>
+            </li>
+        </ul>
+</td></tr>
+                    </table>
+                    <table class="technical-details-table">
+                        <tr><td class="table-row-name">Format:</td><td>WOFF</td></tr>
+                        <tr><td class="table-row-name">File Size:</td><td>19.10 Kb</td></tr>
+                        <tr><td class="table-row-name">Browsers:</td><td class="font-features-section">        <ul class="with-popup">
+            <li>
+                <a onclick="" class="textpopper"><img alt="Chrome" class="browser-icon" src="http://cdncms.fonts.net/browsers/browser-chrome.png" /></a>
+                <span class="popup">WOFF is supported in Chrome versions 5+</span>
+            </li>
+            <li>
+                <a onclick="" class="textpopper"><img alt="Firefox" class="browser-icon" src="http://cdncms.fonts.net/browsers/browser-firefox.png" /></a>
+                <span class="popup">WOFF is supported in Firefox versions 3.6+</span>
+            </li>
+            <li>
+                <a onclick="" class="textpopper"><img alt="Internet Explorer" class="browser-icon" src="http://cdncms.fonts.net/browsers/browser-ie.png" /></a>
+                <span class="popup">WOFF is supported in Internet Explorer versions 9+</span>
+            </li>
+            <li>
+                <a onclick="" class="textpopper"><img alt="Opera" class="browser-icon" src="http://cdncms.fonts.net/browsers/browser-opera.png" /></a>
+                <span class="popup">WOFF is supported in Opera versions 11.1+</span>
+            </li>
+            <li>
+                <a onclick="" class="textpopper"><img alt="Safari" class="browser-icon" src="http://cdncms.fonts.net/browsers/browser-safari.png" /></a>
+                <span class="popup">WOFF is supported in Safari versions 5.1+</span>
+            </li>
+        </ul>
+</td></tr>
+                    </table>
+                    <table class="technical-details-table">
+                        <tr><td class="table-row-name">Format:</td><td>WOFF2</td></tr>
+                        <tr><td class="table-row-name">File Size:</td><td>14.51 Kb</td></tr>
+                        <tr><td class="table-row-name">Browsers:</td><td class="font-features-section">        <ul class="with-popup">
+            <li>
+                <a onclick="" class="textpopper"><img alt="Chrome" class="browser-icon" src="http://cdncms.fonts.net/browsers/browser-chrome.png" /></a>
+                <span class="popup">WOFF2 is supported in Chrome versions 36+</span>
+            </li>
+            <li>
+                <a onclick="" class="textpopper"><img alt="Opera" class="browser-icon" src="http://cdncms.fonts.net/browsers/browser-opera.png" /></a>
+                <span class="popup">WOFF2 is supported in Opera versions 26+</span>
+            </li>
+        </ul>
+</td></tr>
+                    </table>
+                    <table class="technical-details-table">
+                        <tr><td class="table-row-name">Format:</td><td>TTF</td></tr>
+                        <tr><td class="table-row-name">File Size:</td><td>31.66 Kb</td></tr>
+                        <tr><td class="table-row-name">Browsers:</td><td class="font-features-section">        <ul class="with-popup">
+            <li>
+                <a onclick="" class="textpopper"><img alt="Chrome" class="browser-icon" src="http://cdncms.fonts.net/browsers/browser-chrome.png" /></a>
+                <span class="popup">TTF is supported in Chrome versions 4+</span>
+            </li>
+            <li>
+                <a onclick="" class="textpopper"><img alt="Firefox" class="browser-icon" src="http://cdncms.fonts.net/browsers/browser-firefox.png" /></a>
+                <span class="popup">TTF is supported in Firefox versions 3.5+</span>
+            </li>
+            <li>
+                <a onclick="" class="textpopper"><img alt="Opera" class="browser-icon" src="http://cdncms.fonts.net/browsers/browser-opera.png" /></a>
+                <span class="popup">TTF is supported in Opera versions 10+</span>
+            </li>
+            <li>
+                <a onclick="" class="textpopper"><img alt="Safari" class="browser-icon" src="http://cdncms.fonts.net/browsers/browser-safari.png" /></a>
+                <span class="popup">TTF is supported in Safari versions 3.1+</span>
+            </li>
+        </ul>
+</td></tr>
+                    </table>
+        </div>
+    </section>
+
+
+
+
+
+
+		</div>
+
+		<div class="secondary" role="complementary">
+            
+
+ 
+
+
+
+        <dl class="tabs product-options">
+            <dd><a href="http://www.fonts.com/font/bitstream/bank-gothic/medium">Buy</a></dd>
+            <dd class="active"><a>Web Font</a></dd>
+        </dl>
+
+    <aside id="webfont" class="namespace side-bar has-tabs">
+        <ul class="structure-only buttonfix">
+            <li><strong>Web font options</strong></li>
+            <li>
+                <select id="webfont-variation-select" class="webfont-variation-select" name="WebFontVariationId" style="display: none;">
+                        <option value="1118796"
+                                selected="selected"
+                                data-tier="1">Latin 1 (15k)</option>
+                        <option value="1295938"
+                                data-tier="1">Latin 1 + OT Features (17k)</option>
+                </select>
+            </li>
+
+        
+            <li>
+                
+
+
+            <div class="create-free-plan">
+                <button data-subscription-tier="Free" type="submit" class="input-submit select-subscription-button">Sign Up for Free!</button>
+            </div>
+
+            </li>
+
+
+        
+        
+            <li>
+                <a class="adjunct" data-ajax="true" data-ajax-begin="Fonts.UI.showAsideSpinner();" data-ajax-complete="Fonts.UI.hideAsideSpinner();" data-ajax-failure="Fonts.UI.hideAsideSpinner();" data-ajax-method="GET" data-ajax-success="Fonts.Families.OnFeatureUpgradePopup" href="/family/feature-upgrade-options?productId=1082562&amp;selectedProductVariationId=1118796&amp;webFont=True" id="webfont-feature-upgrade" rel="nofollow">Format Options</a>
+
+            </li>
+
+        
+        
+        
+
+        </ul>
+        
+
+            <div class="with-dropdown resetable-sing-in-block">
+                <p class="trigger member-forms-trigger fake-dropdown ss-directright">Wish List</p>
+                
+           
+
+
+
+
+
+<div class="member-signin-section-wrapper" style="display:none;">
+
+    <div class="dropdown sign-in-dropdown" style="display:none;">
+        
+<div class="dropdown-inner">
+    
+    <div class="member-forms signin-form"  style="display: none;" >
+
+        <div class="signin-part margin-zero">
+
+            <h3>Sign In</h3>
+            
+            
+           
+           
+<form action="https://www.fonts.com/other/customer/signin" class="member-sign-in-form clearfix jsonp-form" data-jsonp-onBegin="return Fonts.Account.OnMemberSignInStart(&#39;b4fbcb1f04814c98813138ecf240ec31&#39;);" data-jsonp-onComplete="Fonts.Account.OnMemberSignInEnd(&#39;b4fbcb1f04814c98813138ecf240ec31&#39;);" data-jsonp-onError="Fonts.Account.OnMemberSignInEnd(&#39;b4fbcb1f04814c98813138ecf240ec31&#39;);" data-jsonp-onSuccess="Fonts.Account.OnMemberSignInSuccess(this)" id="b4fbcb1f04814c98813138ecf240ec31" method="get" novalidate="novalidate">    <div class="messages-container">
+        <div style="display:none" class="error-user-message-container">
+            <div class="error user-message"></div>
+        </div>
+    </div>
+    <p>
+        <span class="field-validation-valid error-text" data-valmsg-for="UserName" data-valmsg-replace="true"></span>
+        <label for="UserName">E-mail Address</label>
+        <input data-val="true" data-val-required="E-mail address is required." id="UserName" name="UserName" type="email" value="" />
+
+        <span class="error-text field-validation-error" data-valmsg-for="Password" data-valmsg-replace="true"></span>
+        <label for="Password">Password</label>
+        <input data-val="true" data-val-regex="Password must be 7 characters long and contain at least one letter." data-val-regex-pattern="^.*$" data-val-required="Password is required." id="Password" name="Password" type="password" />
+
+        <a class="password-reset-link-trigger" onclick="">
+            <b>Forgot Password?</b>
+        </a>
+
+        <span class="remember-me-checkbox">
+            <input data-val="true" data-val-required="The Remember me field is required." id="RememberMe" name="RememberMe" type="checkbox" value="true" /><input name="RememberMe" type="hidden" value="false" />
+            <label for="RememberMe">Remember me</label>
+        </span>
+
+    </p>
+    <p class="submit">
+        
+        <input type="submit" class="input-submit" value="Sign In" />        
+        <input type="button" class="input-submit wait" value="Wait..." style="display: none" />        
+
+
+    </p>
+<input name="UniqueFormId" type="hidden" value="b4fbcb1f04814c98813138ecf240ec31" /><input name="ReturnUrl" type="hidden" value="" /></form>
+
+
+
+
+
+            <div class="flip"><a href="/customer/desktop-fonts-signup-page?returnUrl=http%3A%2F%2Fwww.fonts.com%2Ffont%2Fbitstream%2Fbank-gothic%2Fmedium%2Fweb-font" name="returnUrl">Become A Member</a></div>
+        </div>
+        
+        <div class="reset-password-messages"></div>
+
+        <div class="reset-password-part" style="display: none;">
+
+
+<h3>Forgot your password</h3>
+<form action="https://www.fonts.com/other/customer/resetpassword?formId=a5648597-24f7-40ea-aac9-e015179736ac" class="password-reset-form jsonp-form" data-jsonp-onBegin="$(&#39;#a5648597-24f7-40ea-aac9-e015179736ac&#39;).parent().showLoading()" data-jsonp-onComplete="$(&#39;#a5648597-24f7-40ea-aac9-e015179736ac&#39;).parent().hideLoading()" data-jsonp-onError="$(&#39;#a5648597-24f7-40ea-aac9-e015179736ac&#39;).parent().hideLoading()" data-jsonp-onSuccess="Fonts.Account.OnSuccessCallResetPassword(this, &#39;a5648597-24f7-40ea-aac9-e015179736ac&#39;);" id="a5648597-24f7-40ea-aac9-e015179736ac" method="get" novalidate="novalidate">    <p>
+        <label for="14732917-bbaa-4299-a155-9df189d87752-reset-password-email">E-mail Address</label>
+        <span class="field-validation-valid error-text" data-valmsg-for="Email" data-valmsg-replace="true"></span>
+        <input data-val="true" data-val-regex="Please enter a valid e-mail." data-val-regex-pattern="^\w+([-+.&#39;]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$" data-val-required="E-mail address is required." id="14732917-bbaa-4299-a155-9df189d87752-reset-password-email" name="Email" type="email" value="" />
+    </p>
+    <p class="submit">
+
+        <input type="submit" class="input-submit input-forgot-fix" value="Send now" />
+
+ or  <a class="close" onclick="">Back</a>
+        
+    </p>
+<input id="UniqueFormId" name="UniqueFormId" type="hidden" value="a5648597-24f7-40ea-aac9-e015179736ac" /><input id="UniqueLabelsId" name="UniqueLabelsId" type="hidden" value="14732917-bbaa-4299-a155-9df189d87752-" /></form>
+        </div>
+
+    </div>
+
+</div>
+
+    </div>
+
+</div>
+
+
+
+
+
+            
+            </div>
+
+
+
+
+    </aside>
+    
+
+<aside>
+
+
+
+
+
+           
+
+
+        <h2>Web Font Quality</h2>
+        <ul class="sidebar-tags">
+                <li><a href="/search/web-fonts?SearchType=WebFonts&amp;WebFontQuality=Screen%20Optimized">Screen Optimized</a></li>
+        </ul>
+
+
+
+
+           
+    <h2>Family</h2>
+
+    <ul>
+        <li><a href="/font/bitstream/bank-gothic" class="productpopper popleft">Bank Gothic</a></li>
+    </ul>
+
+    
+
+        <h2>Categories</h2>
+        <ul class="sidebar-tags">        
+                <li > <a href="/browse/classifications/geometric-sans">Geometric Sans</a> </li>
+
+
+        </ul>
+
+
+
+
+    
+
+    <h2 id="designers-block">Designers</h2>
+    <ul class="sidebar-tags">        
+            <li><a href="/browse/designers/morris-fuller-benton">Morris Fuller Benton</a></li>
+    </ul>
+
+
+
+
+    <h2>Keywords</h2>
+    <ul class="keywords sidebar-tags">
+
+                <li ><a href="">1930s</a></li>
+                <li ><a href="">1940s</a></li>
+                <li ><a href="">30s</a></li>
+                <li ><a href="">40s</a></li>
+                <li ><a href="">American</a></li>
+                <li style=display:none; class=more-keywords><a href="">anno 1930</a></li>
+                <li style=display:none; class=more-keywords><a href="">anno 1940</a></li>
+                <li style=display:none; class=more-keywords><a href="">Art Deco</a></li>
+                <li style=display:none; class=more-keywords><a href="">Artdeco</a></li>
+                <li style=display:none; class=more-keywords><a href="">block</a></li>
+                <li style=display:none; class=more-keywords><a href="">cap</a></li>
+                <li style=display:none; class=more-keywords><a href="">capsonly</a></li>
+                <li style=display:none; class=more-keywords><a href="">clean</a></li>
+                <li style=display:none; class=more-keywords><a href="">clena</a></li>
+                <li style=display:none; class=more-keywords><a href="">comercial</a></li>
+                <li style=display:none; class=more-keywords><a href="">commercial</a></li>
+                <li style=display:none; class=more-keywords><a href="">conservative</a></li>
+                <li style=display:none; class=more-keywords><a href="">Constructed</a></li>
+                <li style=display:none; class=more-keywords><a href="">Cool</a></li>
+                <li style=display:none; class=more-keywords><a href="">Corporate</a></li>
+                <li style=display:none; class=more-keywords><a href="">Decorative</a></li>
+                <li style=display:none; class=more-keywords><a href="">Didone</a></li>
+                <li style=display:none; class=more-keywords><a href="">engraving</a></li>
+                <li style=display:none; class=more-keywords><a href="">fashionable</a></li>
+                <li style=display:none; class=more-keywords><a href="">formal</a></li>
+                <li style=display:none; class=more-keywords><a href="">futuristic</a></li>
+                <li style=display:none; class=more-keywords><a href="">Geometric</a></li>
+                <li style=display:none; class=more-keywords><a href="">german</a></li>
+                <li style=display:none; class=more-keywords><a href="">Grotesque</a></li>
+                <li style=display:none; class=more-keywords><a href="">idiosyncratic</a></li>
+                <li style=display:none; class=more-keywords><a href="">jazz</a></li>
+                <li style=display:none; class=more-keywords><a href="">Magazine</a></li>
+                <li style=display:none; class=more-keywords><a href="">Male</a></li>
+                <li style=display:none; class=more-keywords><a href="">masculine</a></li>
+                <li style=display:none; class=more-keywords><a href="">mechanical</a></li>
+                <li style=display:none; class=more-keywords><a href="">Menus</a></li>
+                <li style=display:none; class=more-keywords><a href="">minimal</a></li>
+                <li style=display:none; class=more-keywords><a href="">Modern</a></li>
+                <li style=display:none; class=more-keywords><a href="">modest</a></li>
+                <li style=display:none; class=more-keywords><a href="">narrow</a></li>
+                <li style=display:none; class=more-keywords><a href="">old-fashioned</a></li>
+                <li style=display:none; class=more-keywords><a href="">plain</a></li>
+                <li style=display:none; class=more-keywords><a href="">Poster</a></li>
+                <li style=display:none; class=more-keywords><a href="">Readable</a></li>
+                <li style=display:none; class=more-keywords><a href="">Retro</a></li>
+                <li style=display:none; class=more-keywords><a href="">sansserif</a></li>
+                <li style=display:none; class=more-keywords><a href="">shortcaps</a></li>
+                <li style=display:none; class=more-keywords><a href="">Signage</a></li>
+                <li style=display:none; class=more-keywords><a href="">smallcaps</a></li>
+                <li style=display:none; class=more-keywords><a href="">Sport</a></li>
+                <li style=display:none; class=more-keywords><a href="">square</a></li>
+                <li style=display:none; class=more-keywords><a href="">sturdy</a></li>
+                <li style=display:none; class=more-keywords><a href="">Swiss</a></li>
+                <li style=display:none; class=more-keywords><a href="">Techno</a></li>
+                <li style=display:none; class=more-keywords><a href="">television</a></li>
+                <li style=display:none; class=more-keywords><a href="">unicase</a></li>
+                <li style=display:none; class=more-keywords><a href="">unusual</a></li>
+                <li style=display:none; class=more-keywords><a href="">vintage</a></li>
+                <li style=display:none; class=more-keywords><a href="">webgraphics</a></li>
+                <li style=display:none; class=more-keywords><a href="">Wide</a></li>
+
+            <li><a class="show-more" id="show-more-keywords" onclick="SideBar.ToggleShowMoreKeywords(); return false;"> + More...</a></li>
+    </ul>
+
+
+
+</aside>
+
+
+
+
+
+		</div>
+
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+    
+    
+    <div class="create-free-plan">
+        <a class="payment-pathway btn-free-webfonts select-subscription-button" data-subscription-tier="Free">free <span>web fonts</span></a>
+    </div>
+
+    <footer class="page-footer" role="contentinfo">
+        <div class="newsletter">
+            
+
+<div id="newsletter-message-ceontainer"></div>
+
+
+
+
+
+<div class="namespace newsletter-form">
+<div class="row">
+
+    <div class="column small-centered columns text-center">
+        
+<form action="/other/newsletter/subscribe" class="newsletter-form" data-ajax="true" data-ajax-begin="$(&#39;#newsletter-form&#39;).showLoading()" data-ajax-complete="$(&#39;#newsletter-form&#39;).hideLoading()" data-ajax-method="POST" data-ajax-success="Fonts.Newsletter.OnNewsletterSubscribed(data, &#39;#newsletter-form&#39;, &#39;#newsletter-message-container&#39;)" id="newsletter-form" method="post" novalidate="novalidate"><label for="SubscriberEmail">Stay in the loop:</label><input data-val="true" data-val-regex="Please enter a valid e-mail." data-val-regex-pattern="^\w+([-+.&#39;]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$" data-val-required="E-mail address is required." id="SubscriberEmail" name="SubscriberEmail" placeholder="you@domain.com" type="email" value="" /><input data-val="true" data-val-required="The Get first looks at upcoming discounts, new releases and typographic tips through the Fonts.com newsletter. field is required." id="SubscribedDesktopFonts" name="SubscribedDesktopFonts" type="hidden" value="true" />            <input type="submit" class="button radius secondary medium" value="Sign Up" />
+            <a href="/content/newsletters" class="more">Past Newsletters</a>
+<span class="field-validation-valid" data-valmsg-for="SubscriberEmail" data-valmsg-replace="true"></span></form>        
+    </div>
+    
+</div>
+</div>
+        </div>
+    <div class="wrap coda">
+        <h1>Find Your Type</h1>
+        <div class="wingding">
+            <div class="sprite curly sized"></div>
+            </div>
+        <ul class="footer-nav-a">
+	<li><a href="/info/about-us">About</a></li>
+	<li><a href="http://blog.fonts.com">Blog</a></li>
+	<li><a href="/browse/font-tools">Font Tools</a></li>
+	<li><a href="/info/services">Services</a></li>
+	<li><a href="/info/contact/sell-fonts">Submit Fonts</a></li>
+	<li><a href="/info/affiliates">Be an Affiliate</a></li>
+	<li><a href="/support">Support</a></li>
+	<li><a href="/info/contact">Contact</a></li>
+	<li><a href="/web-fonts/developers">Developers</a></li>
+</ul>
+
+<ul class="footer-nav-b">
+	<li><a href="http://www.monotype.com/">Monotype</a></li>
+	<li><a href="/info/legal" rel="nofollow">Legal</a></li>
+	<li><a href="/sitemap">Sitemap</a></li>
+	<li><a href="/browse/font-lists">Font Index</a></li>
+	<li>
+		<ul class="share-bar">
+			<li class="facebook">
+				<a rel="me" href="http://www.facebook.com/fonts" class="webicon facebook small">Facebook</a>
+			</li>
+			<li class="twitter">
+				<a rel="me" href="https://twitter.com/fontscom" class="webicon twitter small">Twitter</a>
+			</li>
+			<li class="googleplus">
+				<a rel="me" href="https://plus.google.com/u/0/118078506224290213699" class="webicon googleplus small">Google+</a>
+			</li>
+			<li class="dribbble">
+				<a rel="me" href="https://dribbble.com/Fontscom" class="webicon dribbble small">Dribbble</a>
+			</li>
+		</ul>
+
+	</li>
+</ul>
+
+        
+<ul class="current-version">
+    <li><span>F:2.10.796.33297&nbsp;&nbsp;/&nbsp;&nbsp;S:1.1.5597.23044&nbsp;&nbsp;/&nbsp;&nbsp;W:1.12.5.1604</span></li>
+</ul>    </div>
+</footer>
+
+
+    <div id="LoginSignupModal" class="reveal-modal tiny" data-reveal>
+      
+<div class="namspace loginsignup flip">
+	<div class="flip-container" data-context="flip-container">
+		<div class="flipper">
+			<div class="front">
+				<div class="row">
+					<div class="columns large-10 large-offset-1">
+						<h1>Sign In</h1>
+						 
+           
+           
+<form action="https://www.fonts.com/other/customer/signin" class="member-sign-in-form clearfix jsonp-form" data-jsonp-onBegin="return Fonts.Account.OnMemberSignInStart(&#39;92537057ed0040f6958e88eed626c582&#39;);" data-jsonp-onComplete="Fonts.Account.OnMemberSignInEnd(&#39;92537057ed0040f6958e88eed626c582&#39;);" data-jsonp-onError="Fonts.Account.OnMemberSignInEnd(&#39;92537057ed0040f6958e88eed626c582&#39;);" data-jsonp-onSuccess="Fonts.Account.OnMemberSignInSuccess(this)" id="92537057ed0040f6958e88eed626c582" method="get" novalidate="novalidate">    <div data-alert class="alert-box alert hide">
+      <p></p>
+    </div>
+<input data-val="true" data-val-required="E-mail address is required." id="UserName" name="UserName" placeholder="Email Address" type="text" value="" /><input data-val="true" data-val-regex="Password must be 7 characters long and contain at least one letter." data-val-regex-pattern="^.*$" data-val-required="Password is required." id="Password" name="Password" placeholder="Password" type="password" /><input data-val="true" data-val-required="The Remember me field is required." id="RememberMe" name="RememberMe" type="checkbox" value="true" /><input name="RememberMe" type="hidden" value="false" />    <label class="check-label" for="RememberMe">Remember Me</label>
+    <input type="submit" class="button radius" value="Sign In" />        
+    <input type="button" class="button radius wait secondary" value="Wait..." style="display: none" /> 
+    <p class="text-center">
+        <a href="#" class="text-center">Forgot your password?</a>
+    </p>
+<input name="UniqueFormId" type="hidden" value="92537057ed0040f6958e88eed626c582" /><input name="ReturnUrl" type="hidden" value="" /></form>
+
+
+
+
+					</div>
+				</div>
+				<div class="row">
+					<div class="columns large-12 flipbtn">
+						<a href="#" class="right-icon ss-right" data-action="flipto-signup">Not a member? Sign up now</a>
+					</div>
+				</div>
+			</div>
+			<div class="back">
+				<div class="row">
+					<div class="columns large-10 large-offset-1">
+						<h1>Free Web Font Subscription</h1>
+						
+
+
+<form action="https://www.fonts.com/other/customer/createaccountwitheula" class="create-account-form jsonp-form" data-jsonp-onBegin="return Fonts.Account.OnCreateAccountStart(&#39;911b4207138c4817922e279aab17ac4f&#39;);" data-jsonp-onComplete="Fonts.Account.OnCreateAccountEnd(&#39;911b4207138c4817922e279aab17ac4f&#39;);" data-jsonp-onError="Fonts.Account.OnCreateAccountEnd(&#39;911b4207138c4817922e279aab17ac4f&#39;);" data-jsonp-onSuccess="Fonts.Account.OnCreateAccountSuccess(this)" id="911b4207138c4817922e279aab17ac4f" method="get" novalidate="novalidate">    <div data-alert class="alert-box alert hide">
+      <p></p>
+    </div>
+<input data-val="true" data-val-regex="Please enter a valid e-mail." data-val-regex-pattern="^\w+([-+.&#39;]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$" data-val-required="E-mail address is required." id="Email" name="Email" placeholder="Email Address" type="text" value="" /><input data-val="true" data-val-length="&amp;#39;Password&amp;#39; must be at least 6 characters long." data-val-length-min="6" data-val-regex="Password must be 7 characters long and contain at least one letter." data-val-regex-pattern="^.*$" data-val-required="Password is required." id="Password" name="Password" placeholder="Password" type="password" />    <div class="password-meter">
+    <div>
+        <hr />
+        <hr />
+        <hr />
+        <hr />
+    </div>
+    </div>
+<input data-val="true" data-val-required="The IsEulaAccepted field is required." id="IsEulaAccepted" name="IsEulaAccepted" type="checkbox" value="true" /><input name="IsEulaAccepted" type="hidden" value="false" />    <label class="check-label" for="IsEulaAccepted">I’ve read and accept the <a href="#">terms</a></label>
+<input name="UniqueFormId" type="hidden" value="911b4207138c4817922e279aab17ac4f" /><input name="ReturnUrl" type="hidden" value="" />        <input type="submit" class="button radius" value="Start Subscription" />
+        <input type="button" class="button radius wait" value="Wait..." style="display: none" />
+    <p class="text-center">
+        Need more Web font power?<br /><a href="#">View Plans and Pricing</a>
+    </p>
+</form>
+					</div>
+				</div>
+				<div class="row">
+					<div class="columns large-12 flipbtn">
+						<a href="#" class="right-icon ss-right" data-action="flipto-signin">Already a member? Sign in</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+
+      <a class="close-reveal-modal ss-icon">close</a>
+    </div>
+
+    
+
+
+    <script src="/Scripts/modernizr.js"></script>
+
+
+    
+
+
+	<script src="//fast.fonts.net/FontsCom/Live/static/Scripts/App.Product.2.10.796.33297.min.js"></script>
+
+<input type="hidden" value="Product" id="jsType"/>
+
+
+
+    <script type="text/javascript">
+
+    Fonts.Translations
+        .setErrorMessage('Server error occurred. Please retry.')
+        .setSuccessMessage('Thank you!')
+        .setShowLabel('Show')
+        .setHideLabel('Hide')
+        .setPleaseWaitButton('Please Wait..')
+        .setCloseLabel('Close')
+        .setOpenLabel('Open')
+        .setGoogleWebFontsAddSuccessMessage('Google Font added to SkyFonts client')
+        .setGoogleWebFontsEnableProviderMessage('Google provider not enabled in SkyFonts client')
+        .setGoogleWebFontsAlreadyAddedMessage('Google Font already added to your SkyFonts client')
+        .youMustReadAndAcceptLicenseDocumentsAndTob('You must read and accept License Documents and Terms of Business')
+        .setImportantMessageTitle('Important!')
+        .setAfterSuccessfullyDowngradedToFreeMessage('Paid fonts are being removed from your project(s). It may take some time to update all affected projects.')
+        .setCloseWithoutSaveWarningMessage('Warning! You have unsaved changes. By continuing, you will lose your changes. Do you really want to continue?')
+        .setCheckingForSkyFontsClientMessage('Checking for SkyFonts client. Please wait...')
+        .setCheckingForSkyFontsClientTitle('SkyFonts detection')
+        .setSkyFontsClientUseSameAccountMessage('Please use the same account on fonts.com and SkyFonts client.');
+
+    if (typeof FontPreview !== 'undefined') {
+        FontPreview
+                .ChangeDefaultText('The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.')
+                .SetFrsUrl('frs.monotypeimaging.com')
+                .SetCdnFrsUrl('cdnimg.fonts.net')
+                .SetTryItOutImageWidth('1000')
+                .SetDefaultTextsList(["The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.","\"Now fax quiz Jack!\" my brave ghost pled","The jay, pig, fox, zebra, and my wolves quack","Glib jocks quiz nymph to vex dwarf","Five quacking zephyrs jolt my wax bed","Few quips galvanized the mock jury box","Quizzical twins proved my hijack-bug fix","When zombies arrive, quickly fax judge Pat","Pack my red box with five dozen quality jugs","Fake bugs put in wax jonquils drive him crazy"]);
+    }
+
+    Fonts.Urls.bindUrls({
+        applyCartCouponAddressTemplate : '/other/cart/applypromotioncodetocart',
+        getBillingStatesListAddressTemplate : '/other/cart/getstatesbycountryisocode',
+        getAccountStatesListAddressTemplate : '/other/account/getstatesbycountryisocode',
+        getChangePaymentPlanTemplate : '/other/webfontsplans/changepaymentplan',
+        getChangePaymentFrequencyTemplate : '/other/webfontsplans/changepaymentfrequency',
+        getProductPopupTemplate : '/other/home/getproductpopup',
+        getRolloverPopupTemplate : '/other/home/featuredfontsrollovers',
+        searchFamilyProductsAddress : '/other/search/searchfamilyproducts',
+        getWishListProductsAddress : '/other/search/getwishlistproducts',
+        ordersAndDownloads : '/other/account/orders',
+        getCancelSubscriptionTemplate : '/other/webfontsplans/cancelsubscription',
+        getGenerateAuthorizationTokenTemplate : '/other/account/generateauthorizationtoken',
+        getSaveAuthorizationTokenTemplate : '/other/account/saveauthorizationtoken',
+        getCalculateTaxVatOptionalTemplate : '/other/cart/calculatetaxvatoptional',
+        getApplyPromotionCodeToCartTempale : '/other/cart/applypromotioncodetocart',
+        familyProductsAddress : '/other/browsefont/getfontfamilyproducts',
+        getCartFloatingNavigation : '/other/cart/cartfloatingnavigation',
+        updateCartLicenseQuantity : '/other/cart/updatelicensequantity',
+        updateProjectAddress : '/other/webfontsprojectmanagement/getprojectlistitem',
+        deleteProjectAddess : '/other/webfontsprojectmanagement/deleteproject',
+        getCartPageSummary : '/other/cart/cartsummary',
+        getCartItemsDetails : '/other/cart/getcartdetails',
+        deleteCartItem : '/other/cart/removecartitem',
+        getCartItemsDetailsReadonly : '/other/cart/getorderdetailsasreadonly',
+        cancelCheck : '/other/webfontsplans/cancelcheck',
+        loginUrl : '/customer/login-page',
+        clientAliasLabelTemplate : '/other/header/clientaliaslabel',
+        updateCartItemFeature : '/other/cart/cartitemfeatureupgrade',
+        updateCartItemFormat : '/other/cart/changecartitemformat',
+        cartPaymentInformationSection : '/other/cart/getcartpaymentinformationsection',
+        cartPageUrl : '/cart',
+        cartVatCalculationUrl : '/other/cart/calculatetaxvatoptional',
+        addSpecimenImage : '/other/carousel/addspecimenimage',
+        removeRefinementsUrl : '/other/search/removerefinement',
+        fontFeaturesRolloversUrl : '/other/product/fontfeaturesrollovers',
+        accountInformationForm : '/other/account/accountinformation',
+        authenticationKeyForm : '/other/account/authenticationkey',
+        updatePaymentInformationForm : '/other/account/updatepaymentinformation',
+        addSpecimenImageThumb : '/other/carousel/addspecimenthumbnailimage',
+        getSubscriptionPlanDialog : '/other/webfontsplans/subscriptionplandialog',
+        frsSupportedOpenTypeFeaturesRolloversUrl : '/other/search/frssupportedopentypefeaturesrollovers',
+        searchAutoCompleteUrl : '/other/search/autocomplete',
+        googleWebFontsDialogUrl : '/other/skyfonts/googlewebfontsdialog?pageNumber=1&amp;showAddMultipleFontsButton=False',
+        downloadSkyFontsClientModalUrl : '/other/skyfonts/downloadskyfontsclientmodal',
+        activeAndExpiredFontsUrl : '/other/skyfonts/activeandexpiredfonts',
+        activeFontsUrl : '/other/skyfonts/getallactivefontsdialog?pageNumber=1',
+        expiredFontsUrl : '/other/skyfonts/getallrecentlyexpiredfontsdialog?pageNumber=1',
+        allActiveSkyfontsCountUrl : '/other/skyfonts/getallactiveskyfontscount',
+        remainingCreditsUrl : '/other/skyfonts/getremainingcredits',
+        skyFontsUserIdUrl : '/other/skyfonts/skyfontsuserid',
+        skyFontsTemporaryAuthTokenUrl : '/other/skyfonts/gettemporaryauthtoken',
+        skyFontsActivationDialogUrl: '/other/skyfonts/skyfontsactivationdialog',
+        skyFontsActivationDialogInstallUrl: '/other/skyfonts/skyfontsactivationdialoginstall',
+        addToWishListActionUrl : '/other/search/addtowishlist',
+        addToWebFontActionUrl : '/other/search/addtowebfont',
+        addToWebFontAllFamilyFontsOrProjectUrl : '/other/search/addtowebfontallfamilyfontsorproject',
+        addItemToSkyFontsUrl : '/other/skyfonts/additemtoskyfonts',
+        addToCart : '/other/product/addtocart',
+        removeFromCart : '/other/cart/removecartitembyvaridandlicense',
+        characterMapTabContent : '/other/product/charactermaptabcontent'
+    });
+
+    $(function () {
+        Fonts.Fileuploader.clickToSelectFileMessage('Click to select a file...');
+        Fonts.Products.attachTextSubmitListeners();
+        Fonts.Products.selectTab(location.hash);
+});
+
+Fonts.UI.ConfirmDialogHtml = '    <section class="confirm-modal modal">        <h1><b><span id="confirm-title">Confirm</span></b></h1>        <a class="close">close</a>                <div class="padding_wrapper">            <div class="gray_wrapper">                           <div class="modal-content">                   <p><span id="confirm-message">Are you sure?</span></p>                   <br />                                       <div class="demolish-container">                                           <input type="submit" class="input-submit-remove" value="OK" />                        <p class="from-top"> or </p><a class="close-popup" title="Close">Cancel</a>                            </div>                    <div class="clear"></div>                 </div>                               <div class="clear"> </div>                        </div>        </div>    </section>';
+Fonts.UI.AlertDialogHtml = '    <section class="alert-modal modal">        <h1><b><span id="alert-title">Alert</span></b></h1>        <a class="close">close</a>                <div class="padding_wrapper">            <div class="gray_wrapper">                           <div class="modal-content">                   <div id="fonts-alert-messages" >    <div class="caution-user-message-container" style="display:none">        <div class="caution user-message">        </div>    </div>        <div class="error-user-message-container" style="display:none">        <div class="error user-message">        </div>    </div>        <div class="success-user-message-container" style="display:none">        <div class="success user-message">        </div>    </div></div>                 </div>                               <div class="clear"> </div>                        </div>        </div>    </section>';
+
+
+
+
+SiteUrls.bindUrls({
+        getProductPopupTemplate: '/other/home/getproductpopup',
+        getFeaturedFontsRolloverPopupTemplate: '/other/home/featuredfontsrollovers',
+        customerMemberForms: '/other/customer/memberforms',
+        customerNeedSupportSection: '/other/customer/needsupportsection?hideCloseLink=False',
+        cartTotalSection: '/other/currency/carttotalsection',
+        miniCartSection: '/other/cart/minicartsection',
+        getOtSelectors: '/other/webfontsprojectmanagement/getotfselectors',
+        updateSelectorOtf: '/other/webfontsprojectmanagement/updateprojectotselectorwithotfeatures',
+        detachProjectSelector: '/other/webfontsprojectmanagement/detachfontfromprojectselector',
+        detachProjectSelectors: '/other/webfontsprojectmanagement/detachfontsfromprojectselector',
+        searchAutoCompleteUrl: '/other/search/autocomplete',
+        addToCartCheck: '/other/webfontsplans/addtocartcheck',
+        shareByEmailLink: '/other/home/sharebyemaillink'
+    });
+
+Fonts.initializeSite();
+
+var _affq = _affq || [];
+_affq.push(['setAccount', '1']);
+_affq.push(['trackPageview']);
+
+
+
+    $(document).ready(function () {
+        $.ajax({ dataType: "script", cache: true, url: "//ajax.aspnetcdn.com/ajax/jquery.validate/1.8.1/jquery.validate.min.js" }).done(function () {
+            $.ajax({ dataType: "script", cache: true, url: "//ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.unobtrusive-ajax.min.js" }).done(function () {
+                $.ajax({ dataType: "script", cache: true, url: "//ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.min.js" }).done(function () {
+                        
+                        $.ajax({ dataType: "script", cache: true, url: "//fast.fonts.net/FontsCom/Live/static/Scripts/fonts.ui.custom.validation.2.10.796.33297.min.js" }).done(function () {
+                            $.validator.setDefaults({ onfocusout: false });
+                        });                        
+                                                
+                });
+            });
+        });
+    });</script>    
+    
+    
+
+    <script type="text/javascript">
+        $(function () {
+            Fonts.WebFonts.EnsureAllVisibleWebFontDeclarations();
+            FontPreview.attachColorPicker('foreground');
+            FontPreview.attachColorPicker('background');
+            FontPreview.attachColorPickerCloseListener();
+            Fonts.Products.updateCharacterMap('');
+        });
+    </script>
+    
+
+
+    
+
+    <input type="hidden" value="Product" id="jsType"/>
+    
+
+</body>
+</html>
+

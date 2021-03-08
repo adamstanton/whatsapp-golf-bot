@@ -1,0 +1,23 @@
+
+{
+        "user": "datalogin",
+        "password": "_DATAm5t@system50",
+        "server": "127.0.0.1",
+        "database": "GolfDB",    
+        "post_to_database": true,
+        "options": {
+            "encrypt": true 
+        },
+        "toptracerurl": "http://sim-tv.protrace.me:7070/",
+        "toptracerip": "172.16.23.11",
+        "toptracerport": "7071",
+        "bays": [ 0, 1, 2, 3, 4, 5, 6, 7, 8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18 ],
+        "cameraheight": 0,
+        "testmode":0,
+        "intraneturl": "http://172.16.17.29",
+        "pagination_min_id": true,
+        "manual_poll": false,
+        "connect_vaporCG": false,
+        "vaporCG": "http://192.168.1.5:3060"
+}
+

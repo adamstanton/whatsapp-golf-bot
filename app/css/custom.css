@@ -1,0 +1,287 @@
+@font-face{
+  font-family: 'PT_Sans_Bold';
+  src: url('../fonts/fonts/PT_Sans-Web-Bold.ttf');
+  }
+
+.cmn-toggle {
+  position: absolute;
+  margin-left: -9999px;
+  visibility: hidden;
+}
+.cmn-toggle + label {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  user-select: none;
+}
+input.cmn-toggle-round-flat + label {
+  padding: 2px;
+  width: 44px;
+  height: 24px;
+  background-color: #dddddd;
+  border-radius: 30px;
+  transition: background 0.4s;
+}
+input.cmn-toggle-round-flat + label:before,
+input.cmn-toggle-round-flat + label:after {
+  display: block;
+  position: absolute;
+  content: "";
+}
+input.cmn-toggle-round-flat + label:before {
+  top: 2px;
+  left: 2px;
+  bottom: 2px;
+  right: 2px;
+  background-color: #fff;
+  border-radius: 30px;
+  transition: background 0.4s;
+}
+input.cmn-toggle-round-flat + label:after {
+  top: 4px;
+  left: 4px;
+  bottom: 4px;
+  width: 12px;
+  background-color: #dddddd;
+  border-radius: 26px;
+  transition: margin 0.4s, background 0.4s;
+}
+input.cmn-toggle-round-flat:checked + label {
+  background-color: #8cc2e1;
+}
+input.cmn-toggle-round-flat:checked + label:after {
+  margin-left: 23px;
+  background-color: #0051e8;
+}
+
+.title
+{
+    font-family: Bank Gothic W01 Medium;
+    position: absolute;
+    font-size: 44px;
+    color: #f8d71d;
+    left: 0px;
+    top: 925px;
+    text-align: center;
+    width: 1870px;
+}
+
+.teamscore
+{
+    position: absolute;
+    font-family: PT_Sans_Bold;
+    font-size: 50px;
+    left: 814px;
+    top: 855px;
+    color: #ffffff;
+    text-align: center;
+    width: 100px;
+}
+
+.homescore
+{
+    left: 834px;
+}
+
+.awayscore
+{
+    left: 950px;
+}
+
+.teamcenter
+{
+    left: 892px;
+}
+
+textarea {
+    overflow-y: scroll;
+    height: 500px;
+    resize: none; /* Remove this if you want the user to resize the textarea */
+}
+
+.col-md-10, .col-sm-10, .col-xs-10 {
+  padding: 7px;
+}
+
+body {
+  background-image: url('../images/background.jpg');
+
+}
+
+table {
+  background-color: #fff;
+}
+
+.toptracer-logo {
+  background-image: url('../images/logo-tg-toptracer-blue.png');
+  position: absolute;
+  width:266px;
+  height: 30px;
+  top:20px;
+  left:20px;
+  opacity: 1;
+  overflow: hidden;
+  z-index: 2;
+}
+.mst-logo {
+  background-image: url('../images/mst-logo.png');
+  background-size: 100% 100%;
+  position: absolute;
+  height: 70px;
+  width:148px;
+  top:0px;
+  left:305px;
+  opacity: 1;
+  overflow: hidden;
+  z-index: 2;
+}
+
+
+.ballspeedtxt {
+  font-family: PT_Sans_Bold;
+  position: absolute;
+  top: 869px;
+  left: 754px;
+  z-index: 5;
+  height: 40px;
+  width: 150px;
+  color: rgb(180, 12, 12);
+  font-size: 30px;
+  text-align: center;
+}
+
+.apextxt {
+  font-family: PT_Sans_Bold;
+  position: absolute;
+  top: 305px;
+  left: 544px;
+  z-index: 5;
+  height: 40px;
+  width: 150px;
+  color: rgb(180, 12, 12);
+  font-size: 30px;
+  text-align: center;
+}
+.ui-panel {
+  background-color: rgba(255, 255, 255, 0.6);
+  margin-top: 50px;
+}
+
+.carry-background {
+  background-image: url('../images/carry.png');
+  background-size: 100% 100%;
+  position: absolute;
+  height: 70px;
+  width:148px;
+  top:75px;
+  left:762px;
+  opacity: 1;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.carrytxt {
+  font-family: PT_Sans_Bold;
+  position: absolute;
+  top: 106px;
+  left: 762px;
+  z-index: 5;
+  height: 40px;
+  width: 150px;
+  color:#094d8d;
+  font-size: 30px;
+  text-align: center;
+}
+
+
+.hole-background {
+  background-image: url('../images/hole.png');
+  background-size: 100% 100%;
+  position: absolute;
+  height: 88px;
+  width:300px;
+  top:75px;
+  left:60px;
+  opacity: 1;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.playertxt {
+  font-family: PT_Sans_Bold;
+  position: absolute;
+  top: 77px;
+  left: 125px;
+  z-index: 5;
+  height: 40px;
+  width: 150px;
+  color:#094d8d;
+  font-size: 28px;
+  text-align: center;
+}
+
+.matchtxt {
+  font-family: PT_Sans_Bold;
+  position: absolute;
+  top: 122px;
+  left: 60px;
+  z-index: 5;
+  height: 40px;
+  width: 150px;
+  color:#094d8d;
+  font-size: 28px;
+  text-align: center;
+}
+
+.holetxt {
+  font-family: PT_Sans_Bold;
+  position: absolute;
+  top: 122px;
+  left: 200px;
+  z-index: 5;
+  height: 40px;
+  width: 150px;
+  color:#094d8d;
+  font-size: 28px;
+  text-align: center;
+}
+
+.angle-background {
+  background-image: url('../images/angle.png');
+  background-size: 100% 100%;
+  position: absolute;
+  height: 88px;
+  width:300px;
+  top:775px;
+  left:60px;
+  opacity: 1;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.landingangletxt {
+  font-family: PT_Sans_Bold;
+  position: absolute;
+  top: 780px;
+  left: 0px;
+  z-index: 5;
+  height: 40px;
+  width: 440px;
+  color:#094d8d;
+  font-size: 28px;
+  text-align: center;
+}
+
+.launchangletxt {
+  font-family: PT_Sans_Bold;
+  position: absolute;
+  top: 823px;
+  left: 0px;
+  z-index: 5;
+  height: 40px;
+  width: 440px;
+  color:#094d8d;
+  font-size: 28px;
+  text-align: center;
+}

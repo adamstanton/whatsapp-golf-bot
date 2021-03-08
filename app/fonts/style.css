@@ -1,0 +1,425 @@
+
+
+@font-face{
+font-family: 'PT_Sans';
+src:url('fonts/PT_Sans-Web-Regular.ttf');
+}
+
+@font-face{
+font-family: 'PT_Sans_Bold';
+src: url('fonts/PT_Sans-Web-Bold.ttf');
+}
+
+@font-face{
+font-family: 'PT_Sans_Italic';
+src: url('fonts/PT_Sans-Web-Italic.ttf');
+}
+
+body
+{
+    font-family: PT_Sans_Bold;
+    text-shadow: 3px 3px #000000;
+    color: #888888;
+}
+
+.hide
+{
+    display: none;
+}
+
+.show
+{
+    display: block;
+}
+
+#output-main
+{
+    overflow: hidden;
+}
+
+.gfx
+{
+}
+
+/* CLOCK1 */
+
+.clock-bottom
+{
+    position: absolute;
+    bottom: 120px;
+    left: 250px;
+    width: 457px;
+    height: 261px;
+    background-image: url('../media/motorsport/images/RCMainpng.png');
+    color: #FFF;
+    z-index: 1;
+    -webkit-animation-duration: 1s;
+}
+
+/* CLOCK2 */
+
+.clock2-bottom
+{
+    position: absolute;
+    left: 490px;
+    z-index: 1;
+}
+
+/* CLOCK3 */
+
+.clock3-bottom
+{
+    position: absolute;
+    left: 950px;
+    color: #FFF;
+    z-index: 1;
+}
+
+/* CLOCK4 */
+
+.clock4-bottom
+{
+    position: absolute;
+    left: 490px;
+    color: #FFF;
+    z-index: 1;
+    bottom: 419px;
+    display: none;
+}
+
+.clock-bottom-name
+{
+    position: absolute;
+    bottom: 204px;
+    font-size: 35px;
+    font-weight: normal;
+    text-align: left;
+    z-index: 2;
+    font-style: normal;
+    left: 100px;
+}
+
+.clock-bottom-timer
+{
+    position: absolute;
+    left: 80px;
+    bottom: 72px;
+    font-size: 90px;
+    font-weight: normal;
+    text-align: center;
+    color: #FFF;
+    width: 300px;
+    z-index: 2;
+}
+
+.clock1-text
+{
+    left: 0px;
+    bottom: 2px;
+}
+
+.clock1-title
+{
+    left: 0px;
+    bottom: 74px;
+}
+
+.title-clock4
+{
+    color: #ffffff;
+}
+
+.clock-bottom-pos
+{
+    position: absolute;
+    font-size: 38px;
+    width: 60px;
+    left: 19px;
+    bottom: 202px;
+    text-align: center;
+}
+
+.clock-bottom-loc
+{
+    position: absolute;
+    bottom: 18px;
+    left: 27px;
+    text-align: center;
+    width: 40px;
+    height: 30px;
+}
+
+.clock-bottom-spilt
+{
+    position: absolute;
+    bottom: 12px;
+    width: 100px;
+    text-align: center;
+    left: 122px;
+}
+
+.clock-bottom-speed
+{
+    position: absolute;
+    bottom: 11px;
+    left: 282px;
+}
+
+.clock-bottom-speedtitle
+{
+    bottom: 17px;
+    left: 378px;
+    font-size: 26px;
+}
+
+.clock1-bottom
+{
+    left: 32px;
+    position: absolute;
+}
+
+.output
+{
+    width: 1920px;
+    height: 1080px;
+    overflow: hidden;
+}
+
+.rect
+{
+    width: 400px;
+    position: relative;
+    bottom: 4px;
+    background-color: rgba(44, 39, 39, 0.4);
+    left: 4px;
+}
+
+.rect-inside
+{
+    position: absolute;
+    background-color: #9f1111;
+    z-index: 3;
+    left: 50px;
+    bottom: 300px;
+    border: solid;
+    width: 300;
+    height: 300;
+}
+
+strap
+{
+}
+
+.strap
+{
+    bottom: 0px;
+    position: relative;
+    width: 1590px;
+    height: 76px;
+    left: 0px;
+    padding-bottom: 15px;
+}
+
+.rect-pos
+{
+    height: 80px;
+    left: 103px;
+    width: 90px;
+}
+
+.rect-name
+{
+    height: 80px;
+    left: 109px;
+    width: 870px;
+}
+
+.rect-points
+{
+    height: 80px;
+    left: 213px;
+    width: 128px;
+    color: #d2e322;
+    background-color: #f4b22a;
+    bottom: 86px;
+}
+
+.rect-totalpoints
+{
+    height: 80px;
+    left: 220px;
+    width: 172px;
+    bottom: 86px;
+}
+
+.rect-totalpoints-
+{
+    left: 228px;
+}
+
+.rect-name-dark
+{
+    z-index: 3;
+    background-color: #3e3e3e;
+    height: 40px;
+    left: 203px;
+    bottom: 126px;
+}
+
+.strap-text
+{
+    color: #eea727;
+    font-family: DIN;
+    font-size: 60px;
+    width: 80px;
+    text-align: center;
+    left: 109px;
+    position: absolute;
+    bottom: -3px;
+    height: 90px;
+    line-height: 80px;
+    font-style: normal;
+    font-weight: bold;
+}
+
+.strap-text-name
+{
+    width: 851px;
+    z-index: 6;
+    text-align: left;
+    left: 220px;
+    font-size: 32px;
+    bottom: 20px;
+    color: #ffffff;
+}
+
+.strap-text-nat
+{
+    z-index: 5;
+    font-size: 28px;
+    width: 120px;
+    text-align: right;
+    left: -50px;
+    bottom: 2px;
+    color: #cb7a0f;
+    position: relative;
+    display: inline-block;
+}
+
+.strap-text-points
+{
+    left: 1080px;
+    z-index: 10;
+    text-align: center;
+    color: #000000;
+    width: 130px;
+}
+
+.strap-text-totalpoints
+{
+    color: #ffffff;
+    left: 1237px;
+    z-index: 5;
+    text-align: center;
+    width: 150px;
+}
+
+.strap-text-totalpoints-
+{
+    color: #ffffff;
+    text-align: right;
+    left: 1422px;
+}
+
+.strap-text-car
+{
+    bottom: -19px;
+    font-size: 28px;
+}
+
+.allstraps
+{
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    bottom: -180px;
+    left: 119px;
+}
+
+.header
+{
+    width: 1920px;
+    height: 0px;
+}
+
+.rect-header-dark
+{
+    position: absolute;
+    bottom: 55px;
+    width: 921px;
+    height: 100px;
+    left: 381px;
+}
+
+.rect-header-subtitle
+{
+    left: 381px;
+    width: 922px;
+    bottom: 5px;
+}
+
+.header-text-subtext
+{
+    left: 393px;
+    bottom: 12px;
+    text-align: left;
+    width: 850px;
+    position: absolute;
+    font-size: 32px;
+    height: 60px;
+}
+
+.header-text-tilte
+{
+    left: 393px;
+    bottom: 93px;
+    font-size: 40px;
+    width: 705px;
+    height: 51px;
+    line-height: 43px;
+}
+
+.header-eventlogo
+{
+    z-index: 5;
+    background-color: #000;
+    width: 266px;
+    height: 140px;
+    left: 103px;
+    bottom: 16px;
+    position: absolute;
+}
+
+.header-sponsorlogo
+{
+    left: 1314px;
+}
+
+.img-eventlogo
+{
+    position: absolute;
+    width: 308px;
+    height: 150px;
+    left: 81px;
+    bottom: 10px;
+    z-index: 6;
+}
+
+.img-sponsorlogo
+{
+    width: 220px;
+    height: 150px;
+    left: 1337px;
+    bottom: 10px;
+}
+

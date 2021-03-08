@@ -1,0 +1,23 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "three": "0.92.0",
+    "three-text2d": "0.4.1",
+    "serve": "latest"
+  },
+  "devDependencies": {
+    "webpack": "4.9.1",
+    "webpack-cli": "2.1.4",
+    "webpack-dev-server": "3.1.4"
+  },
+  "scripts": {
+    "start": "serve .",
+    "start:dev": "serve .",
+    "build": "webpack --entry ./js/overlay.js --output ./js/bundle.js"
+  },
+  "author": "rase-",
+  "license": "PRIVATE",
+  "description": ""
+}

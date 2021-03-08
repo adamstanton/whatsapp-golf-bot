@@ -1,0 +1,9 @@
+select {
+  font-size: 32px;
+}
+
+.row-padded {
+  padding: 35px;
+  background-color: #F4F0CA;
+  border: 1px solid #000;
+}

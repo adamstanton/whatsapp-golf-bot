@@ -1,0 +1,124 @@
+@font-face {
+font-family: 'PT_Sans';
+src:url('fonts/PT_Sans-Web-Regular.ttf');
+}
+@font-face {
+font-family: 'PT_Sans_Bold';
+src: url('fonts/PT_Sans-Web-Bold.ttf');
+}
+@font-face {
+font-family: 'PT_Sans_Italic';
+src: url('fonts/PT_Sans-Web-Italic.ttf');
+}
+
+
+body {
+	/*background-color: #00ff01;       /*chromer green background*/
+/*	background-image: url('../images/england-rugby-chris-ashton-diving_1920x1080_890-hd.jpg');
+	background-color: #FFFFFF;			  near black dev background */
+	font-family: 'PT_Sans_Bold';
+	text-shadow: 0px 0px #000000;
+	color: #888888;
+}
+.hide {
+	display: none;
+}
+.show {
+	display: block;
+}
+#output-main {
+	overflow: hidden;
+}
+.gfx {
+}
+
+
+/* CLOCK1 */
+.clock1-bottom {
+    position: absolute;
+    bottom:400px;
+    left: 250px;
+	width:216px;
+	height:141px;
+	/*background-color:#00ff01;	*/
+	background-image:url('../images/ticker-clock.png');
+	color:#FFF;
+	z-index: 1;
+}
+
+/* CLOCK2 */
+.clock2-bottom {
+    position: absolute;
+    bottom:400px;
+    left: 500px;
+	width:216px;
+	height:141px;
+	/*background-color:#00ff01;	*/
+	background-image:url('../images/ticker-clock.png');
+	color:#FFF;
+	z-index: 1;
+}
+
+/* CLOCK3 */
+.clock3-bottom {
+    position: absolute;
+    bottom:200px;
+    left: 250px;
+	width:216px;
+	height:141px;
+	/*background-color:#00ff01;	*/
+	background-image:url('../images/ticker-clock.png');
+	color:#FFF;
+	z-index: 1;
+}
+
+/* CLOCK4 */
+.clock4-bottom {
+    position: absolute;
+    bottom:200px;
+    left: 500px;
+	width:216px;
+	height:141px;
+	/*background-color:#00ff01;	*/
+	background-image:url('../images/ticker-clock.png');
+	color:#FFF;
+	z-index: 1;
+}
+
+.clock-bottom-title
+{
+	position: absolute;	
+	bottom: 74px;
+	font-size: 26px;
+	font-weight:bold;
+	text-align: center;	
+	color:#FFF;
+	width:220px;
+	z-index: 2;
+}
+
+.clock-bottom-text
+{
+	position: absolute;	
+	left: 0px;
+	bottom: 2px;
+	font-size: 70px;
+	font-weight:bold;
+	text-align: center;	
+	color:#FFF;
+	width:220px;
+	z-index: 2;
+}
+.clock1-text
+{
+	left: 0px;
+	bottom: 2px;
+}
+
+.clock1-title
+{
+	left: 0px;
+	bottom: 74px;
+}
+
+
