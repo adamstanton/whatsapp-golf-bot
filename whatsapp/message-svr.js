@@ -345,7 +345,8 @@ module.exports = function(client, sql, routes) {
               clientMessage.pIndex = (extractNumber(place[1]) - 1);
               foundPlayer = findPlayer(clientMessage);
               if (translate !== '') {translate += ' '};
-              translate +=  clientMessage.player[clientMessage.pIndex].leaderboardRow.First.charAt(0) + '. ' + clientMessage.player[clientMessage.pIndex].leaderboardRow.Last; 
+              'translate +=  clientMessage.player[clientMessage.pIndex].leaderboardRow.First.charAt(0) + '. ' + clientMessage.player[clientMessage.pIndex].leaderboardRow.Last; 
+              translate +=  'Jordan' + '. ' + 'Fox'; 
               clientMessage.action = 'reply';
             }
             if (incoming.includes('h')) {
