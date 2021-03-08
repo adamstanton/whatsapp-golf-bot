@@ -14,13 +14,17 @@ module.exports = function( sql) {
             // Query
             new sql.Request().query('select * from Tournament where status = 1', (err, result) => {
                 // ... error checks
-                tournID = result.recordset[0].TournamentID;
-                //console.dir(result.recordset[0].TournamentID);
-                new sql.Request().query('SELECT * from Leaderboard where TournamentID = ' + result.recordset[0].TournamentID + ' and Round = ' + result.recordset[0].CurrentRound 
-                + ' ORDER BY Match, orderInMatch', (err, result) => {
-                    golfDraw = result.recordset;
-                     // console.log(golfDraw);
-                }) 
+                if (result !== undefined) {
+                    tournID = result.recordset[0].TournamentID;
+                    //console.dir(result.recordset[0].TournamentID);
+                    new sql.Request().query('SELECT * from Leaderboard where TournamentID = ' + result.recordset[0].TournamentID + ' and Round = ' + result.recordset[0].CurrentRound 
+                    + ' ORDER BY Match, orderInMatch', (err, result) => {
+                        golfDraw = result.recordset;
+                        // console.log(golfDraw);
+                    }) 
+                } else {
+                    console.log('no tournaments found');
+                }
             })
         });    
     }   
