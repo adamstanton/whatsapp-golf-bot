@@ -284,9 +284,9 @@ module.exports = function(client, sql, routes) {
             //const attributes = req.body.message;
             console.log('/webhook');
             // let reqText = req.body.queryResult.queryText;
-            console.log('response: ' + req);
+            console.log('response: ' + req.body.queryResult.queryText);
             // console.log('in app.js' + req.body);
-            clientMessage = translateMessage(reqText);
+            clientMessage = translateMessage(req.body.queryResult.queryText);
             if (clientMessage.action === 'reply') {
                 twilio_client.messages.create({
                   from: 'whatsapp:+14155238886',
