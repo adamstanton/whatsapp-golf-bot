@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var routes = require('./routes/routes.js');
 var http = require('http');
 
 var app = express();
@@ -34,7 +35,6 @@ app.use(
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, 'app')));
-var routes = require('./routes/routes.js');
 
 io.on('connection', function (client) {    
      require('./whatsapp/message-svr.js')(client, sql, routes);

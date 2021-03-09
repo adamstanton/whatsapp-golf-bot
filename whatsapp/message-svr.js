@@ -284,7 +284,7 @@ module.exports = function(client, sql, routes) {
             //const attributes = req.body.message;
             console.log('/webhook');
             // let reqText = req.body.queryResult.queryText;
-            console.log('response: ' + req.body.queryResult.queryText);
+            console.log('response: ' + JSON.stringify(req.body));
             // console.log('in app.js' + req.body);
             clientMessage = translateMessage(req.body.queryResult.queryText);
             if (clientMessage.action === 'reply') {
