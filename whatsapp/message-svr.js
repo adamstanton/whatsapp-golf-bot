@@ -53,7 +53,7 @@ module.exports = function(client, sql, routes) {
     
     // Load configuration information from system environment variables.
     var TWILIO_ACCOUNT_SID = 'ACa21a7d6a8d37d6806cf26b4dbdf36099',
-    TWILIO_AUTH_TOKEN = '897f1943751ca4d0641560c828cae99f',
+    TWILIO_AUTH_TOKEN = '1202c11dc931f288cc09821731c682e6',
     TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER;
 
     // Create an authenticated client to access the Twilio REST API
@@ -345,8 +345,10 @@ module.exports = function(client, sql, routes) {
               clientMessage.pIndex = (extractNumber(place[1]) - 1);
               foundPlayer = findPlayer(clientMessage);
               if (translate !== '') {translate += ' '};
-              'translate +=  clientMessage.player[clientMessage.pIndex].leaderboardRow.First.charAt(0) + '. ' + clientMessage.player[clientMessage.pIndex].leaderboardRow.Last; 
-              translate +=  'Jordan' + '. ' + 'Fox'; 
+              // translate +=  clientMessage.player[clientMessage.pIndex].leaderboardRow.First.charAt(0) + '. ' + clientMessage.player[clientMessage.pIndex].leaderboardRow.Last; 
+              translate +=  'Lee' + '. ' + 'Westwood'; 
+              foundPlayer = true;
+              //  ******************************************
               clientMessage.action = 'reply';
             }
             if (incoming.includes('h')) {
@@ -372,7 +374,8 @@ module.exports = function(client, sql, routes) {
             }
             if (!foundPlayer) {
               if (clientMessage.translatedMessage !== '') {clientMessage.translatedMessage += ' '};
-              clientMessage.translatedMessage += clientMessage.player[clientMessage.pIndex].leaderboardRow.First.charAt(0) + '. ' + clientMessage.player[clientMessage.pIndex].leaderboardRow.Last; 
+              // clientMessage.translatedMessage += clientMessage.player[clientMessage.pIndex].leaderboardRow.First.charAt(0) + '. ' + clientMessage.player[clientMessage.pIndex].leaderboardRow.Last; 
+              clientMessage.translatedMessage += 'L' + '. ' + 'Westwood'; 
             }
             if (!foundHole) {
               if (clientMessage.translatedMessage !== '') {clientMessage.translatedMessage += ' '};
