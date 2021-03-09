@@ -38,7 +38,8 @@
 		$scope.allbays = false;
 		$scope.myTextarea = '';
 		var lastKph = 0;
-		$scope.io = io.connect('http://127.0.0.1:3000');
+		//$scope.io = io.connect('http://127.0.0.1:3000');
+		$scope.io = io.connect();
 		$scope.io.on('connect', function (data) {
 			console.log('io connected');
 			$scope.io.emit('getProjectConfig');
