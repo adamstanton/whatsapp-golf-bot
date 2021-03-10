@@ -341,7 +341,7 @@ module.exports = function(client, sql, routes) {
                   clientMessage.pIndex = pl;
                   foundPlayer = findPlayer(clientMessage); 
                   if (foundPlayer) {
-                    translate += clientMessage.player[pl].playerRow.first.charAt(0) + '. ' + clientMessage.player[pl].playerRow.last + ' ' + clientMessage.player[pl].score + " | \n";
+                    translate += clientMessage.player[pl].playerRow.first.charAt(0) + '. ' + clientMessage.player[pl].playerRow.last + ' ' + clientMessage.player[pl].score + " \n";
                   }
                 }
                 clientMessage.pIndex = currentIndex;
@@ -365,7 +365,7 @@ module.exports = function(client, sql, routes) {
                     clientMessage.pIndex = pl;
                     foundPlayer = findPlayer(clientMessage); 
                     if (foundPlayer) {
-                      translate += clientMessage.player[pl].playerRow.first.charAt(0) + '. ' + clientMessage.player[pl].playerRow.last + " | \n";
+                      translate += clientMessage.player[pl].playerRow.first.charAt(0) + '. ' + clientMessage.player[pl].playerRow.last + " \n";
                     }
                   }  
                 }
@@ -432,7 +432,7 @@ module.exports = function(client, sql, routes) {
               var playerelement = golfDraw.event.players.player[p];
               if( parseInt(roundelement.matchnumber) === match ) {
                 var index = parseInt(roundelement.orderinmatch)
-                rtnStr[index] = (parseInt(roundelement.orderinmatch)).toString() +  ') ' + playerelement.first.charAt(0) + '. ' + playerelement.last + ' | \n';
+                rtnStr[index] = (parseInt(roundelement.orderinmatch)).toString() +  ') ' + playerelement.first.charAt(0) + '. ' + playerelement.last + ' \n';
               }
           }
           var tmpStr = '';
