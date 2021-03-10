@@ -272,26 +272,38 @@ module.exports = function(client, sql, routes) {
               clientMessage.action = 'display';
               return clientMessage;
             }
+
+            if (incoming.includes('help')) {
+              clientMessage.message = 'p = player | m = match | h = hole | s = shot | o=order of play | i = in (score) /n';
+              clientMessage.message += 'add number after each or ? for question i.e.  m3p2 is Match 3 Player 2.  m3p? would reply list of players in match 3'
+              clientMessage.action = 'display';
+              return clientMessage;
+            }
+
             if (incoming.includes('m')) {
-              let place = incoming.split('m');
-              if (translate !== '') {translate += ' '};
-              clientMessage.match = extractNumber(place[1]);
-              if (translate !== '') {translate += ' '};
-              translate += 'match ' + clientMessage.match;
-              clientMessage.action = 'reply';
-              foundMatch = true;
+                let place = incoming.split('m');
+                if (translate !== '') {translate += ' '};
+                clientMessage.match = extractNumber(place[1]);
+                if (translate !== '') {translate += ' '};
+                translate += 'match ' + clientMessage.match;
+                clientMessage.action = 'reply';
+                foundMatch = true;
             }
             if (incoming.includes('p')) {
-              let place = incoming.split('p');
-              if (translate !== '') {translate += ' '};
-              clientMessage.pIndex = (extractNumber(place[1]) - 1);
-              foundPlayer = findPlayer(clientMessage);
-              if (translate !== '') {translate += ' '};
-              translate +=  clientMessage.player[clientMessage.pIndex].playerRow.first.charAt(0) + '. ' + clientMessage.player[clientMessage.pIndex].playerRow.last; 
-              // translate +=  'Lee' + '. ' + 'Westwood'; 
-              // foundPlayer = true;
-              //  ******************************************
-              clientMessage.action = 'reply';
+              if (incoming.includes('?')) {
+                //query players 
+                clientMessage.message = findPlayersInMatch(clientMessage.match);
+                clientMessage.action = 'display';
+                return clientMessage;
+              } else {
+                let place = incoming.split('p');
+                if (translate !== '') {translate += ' '};
+                clientMessage.pIndex = (extractNumber(place[1]) - 1);
+                foundPlayer = findPlayer(clientMessage);
+                if (translate !== '') {translate += ' '};
+                translate +=  clientMessage.player[clientMessage.pIndex].playerRow.first.charAt(0) + '. ' + clientMessage.player[clientMessage.pIndex].playerRow.last; 
+                clientMessage.action = 'reply';
+              }
             }
             if (incoming.includes('h')) {
               let place = incoming.split('h');
@@ -357,6 +369,7 @@ module.exports = function(client, sql, routes) {
                 }
               }
               clientMessage.pIndex = currentIndex; 
+              foundPlayer = true;
               clientMessage.action = 'reply';
             }
             clientMessage.translatedMessage = '';
@@ -398,6 +411,32 @@ module.exports = function(client, sql, routes) {
                 }
             }
             return false;
+        }
+
+        function findPlayersInMatch(match) {
+          // console.log ('in findplayer:clientMessage'  + (JSON.stringify((clientMessage))));
+          currentRnd = parseInt(golfDraw.event.tournament.currentround);
+          var rtnStr = ['', '', '', '', '', '']; 
+          rtnStr[0] = 'match ' + match.toString() + ': \n' 
+          for (p=0; p < golfDraw.event.players.player.length; p++) {
+              playerelement = golfDraw.event.players.player[p];
+              if (currentRnd === 1) {
+                var roundelement = golfDraw.event.players.player[p].round;
+              } else {
+                var roundelement = golfDraw.event.players.player[p].round[currentRnd - 1];
+              }
+              
+              var playerelement = golfDraw.event.players.player[p];
+              if( parseInt(roundelement.matchnumber) === match ) {
+                var index = parseInt(roundelement.orderinmatch)
+                rtnStr[index] = (parseInt(roundelement.orderinmatch)).toString() +  ') ' + playerelement.first.charAt(0) + '. ' + playerelement.last;
+              }
+          }
+          var tmpStr = '';
+          for (i=0; i < 5; i++) {
+            tmpStr += rtnStr[i];
+          }
+          return tmpStr;
         }
         
         function extractNumber(str) {
