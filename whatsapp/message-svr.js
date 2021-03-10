@@ -204,7 +204,7 @@ module.exports = function(client, sql, routes) {
 
         function findSpotter(fromStr) {
           for (i=0; i< spotters.length; i++) {
-            if (spotters[i].user === req.body.From) {
+            if (spotters[i].user === fromStr) {
               return spotters[i];
             }
           } 
