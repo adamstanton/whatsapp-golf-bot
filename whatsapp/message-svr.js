@@ -53,20 +53,20 @@ module.exports = function(client, sql, routes) {
     
     // Load configuration information from system environment variables.
     var TWILIO_ACCOUNT_SID = 'ACa21a7d6a8d37d6806cf26b4dbdf36099',
-    TWILIO_AUTH_TOKEN = '1202c11dc931f288cc09821731c682e6',
+    TWILIO_AUTH_TOKEN = '0f5d3915cfde5734f6468b768a7bd23f',
     TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER;
 
     // Create an authenticated client to access the Twilio REST API
     var twilio_client = twilio(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
-    function PostTrace(tournID, round, shotdata) {
+    function PostDraw() {
             var dataclient = request.createClient(config.intraneturl +  '/');
-            var traceString = JSON.stringify(shotdata.stats);
-            console.log('home/sendtracedata?TournamentID=' + tournID + '&Round=' + round + '&TraceData=' + traceString );
+            // var traceString = JSON.stringify(shotdata.stats);
+            // console.log('home/sendtracedata?TournamentID=' + tournID + '&Round=' + round + '&TraceData=' + traceString );
             // Build the post string from an object
             // An object of options to indicate where to post to
 
-            dataclient.post('home/sendtracedata?TournamentID=' + tournID + '&Round=' + round + '&TraceData=' + traceString, function(err, res, body) {
+            dataclient.post('MST.XML', function(err, res, body) {
                 return console.log(err + ':' + res.statusCode);
             });
 
@@ -83,7 +83,7 @@ module.exports = function(client, sql, routes) {
          //   post_req.end();
 
           //  requesthttp.post('https://ptsv2.com/t/l3bm3-1547718442/post', traceString)
-            console.log('PostTrace complete='  +  traceString );
+            console.log('PostTrace complete'  );
 
         }
         var CCGTemplateName = '';
@@ -115,24 +115,41 @@ module.exports = function(client, sql, routes) {
 
         function getDraw() {
 
+          var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+          var parser = require('xml2json');
+          const xhr = new XMLHttpRequest();
+          xhr.open('GET', config.intraneturl  + `/MST.XML`, true);
+          xhr.onload = function(e) {
+          console.log('got', this.status);
+            if (this.status == 200) {
+              var json = parser.toJson(this.responseText);
+              golfDraw = JSON.parse(json);
+            }
+          };
+          xhr.onerror = function(e) {
+          console.log('error???', e);
+          };
+          xhr.send();
+
+          //PostDraw();
             //console.log('in post-sql=' + config.testmode);
      
                // ... error checks
            
                // Query
-               new sql.Request().query('select * from Tournament where status = 1', (err, result) => {
-                if (result !== undefined) {
-                  tournID = result.recordset[0].TournamentID;
+        //       new sql.Request().query('select * from Tournament where status = 1', (err, result) => {
+        //        if (result !== undefined) {
+        //          tournID = result.recordset[0].TournamentID;
                   //console.dir(result.recordset[0].TournamentID);
-                  new sql.Request().query('SELECT * from Leaderboard where TournamentID = ' + result.recordset[0].TournamentID + ' and Round = ' + result.recordset[0].CurrentRound 
-                  + ' ORDER BY Match, orderInMatch', (err, result) => {
-                      golfDraw = result.recordset;
+        //          new sql.Request().query('SELECT * from Leaderboard where TournamentID = ' + result.recordset[0].TournamentID + ' and Round = ' + result.recordset[0].CurrentRound 
+        //          + ' ORDER BY Match, orderInMatch', (err, result) => {
+        //              golfDraw = result.recordset;
                       // console.log(golfDraw);
-                  }) 
-                } else {
-                    console.log('no tournaments found');
-                }
-               })
+        //          }) 
+        //        } else {
+        //            console.log('no tournaments found');
+        //        }
+        //       })
         }
 
         console.dir(userConfig);
@@ -347,8 +364,8 @@ module.exports = function(client, sql, routes) {
               clientMessage.pIndex = (extractNumber(place[1]) - 1);
               foundPlayer = findPlayer(clientMessage);
               if (translate !== '') {translate += ' '};
-              // translate +=  clientMessage.player[clientMessage.pIndex].leaderboardRow.First.charAt(0) + '. ' + clientMessage.player[clientMessage.pIndex].leaderboardRow.Last; 
-              translate +=  'Lee' + '. ' + 'Westwood'; 
+              translate +=  clientMessage.player[clientMessage.pIndex].playerRow.first.charAt(0) + '. ' + clientMessage.player[clientMessage.pIndex].playerRow.first; 
+              // translate +=  'Lee' + '. ' + 'Westwood'; 
               foundPlayer = true;
               //  ******************************************
               clientMessage.action = 'reply';
@@ -376,8 +393,8 @@ module.exports = function(client, sql, routes) {
             }
             if (!foundPlayer) {
               if (clientMessage.translatedMessage !== '') {clientMessage.translatedMessage += ' '};
-              // clientMessage.translatedMessage += clientMessage.player[clientMessage.pIndex].leaderboardRow.First.charAt(0) + '. ' + clientMessage.player[clientMessage.pIndex].leaderboardRow.Last; 
-              clientMessage.translatedMessage += 'L' + '. ' + 'Westwood'; 
+              clientMessage.translatedMessage += clientMessage.player[clientMessage.pIndex].playerRow.first.charAt(0) + '. ' + clientMessage.player[clientMessage.pIndex].playerRow.last; 
+              // clientMessage.translatedMessage += 'L' + '. ' + 'Westwood'; 
             }
             if (!foundHole) {
               if (clientMessage.translatedMessage !== '') {clientMessage.translatedMessage += ' '};
@@ -391,10 +408,20 @@ module.exports = function(client, sql, routes) {
         
         function findPlayer(clientMessage) {
             // console.log ('in findplayer:clientMessage'  + (JSON.stringify((clientMessage))));
-            for (i=0; i < golfDraw.length; i++) {
-                if(golfDraw[i].Match === clientMessage.match && golfDraw[i].orderInMatch === (clientMessage.pIndex + 1)) {
+            currentRnd = parseInt(golfDraw.event.tournament.currentround);
+            for (i=0; i < golfDraw.event.players.player.length; i++) {
+                playerelement = golfDraw.event.players.player[i];
+                if (currentRnd === 1) {
+                  var roundelement = golfDraw.event.players.player[i].round;
+                } else {
+                  var roundelement = golfDraw.event.players.player[i].round[currentRnd - 1];
+                }
+                
+                var playerelement = golfDraw.event.players.player[i];
+                if(parseInt(roundelement.matchnumber) === clientMessage.match && parseInt(roundelement.orderinmatch) === (clientMessage.pIndex + 1)) {
                    // console.log ('in findplayer:'  + golfDraw.length);
-                    clientMessage.player[clientMessage.pIndex].leaderboardRow = golfDraw[i];
+                    clientMessage.player[clientMessage.pIndex].roundRow = roundelement;
+                    clientMessage.player[clientMessage.pIndex].playerRow = playerelement;
                     return true;
                 }
             }

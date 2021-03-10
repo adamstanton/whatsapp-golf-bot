@@ -14,7 +14,7 @@
         "bays": [ 0, 1, 2, 3, 4, 5, 6, 7, 8,  9, 10, 11, 12, 13, 14, 15, 16, 17, 18 ],
         "cameraheight": 0,
         "testmode":0,
-        "intraneturl": "http://172.16.17.29",
+        "intraneturl": "http://scoring.mstworld.tv",
         "pagination_min_id": true,
         "manual_poll": false,
         "connect_vaporCG": false,
