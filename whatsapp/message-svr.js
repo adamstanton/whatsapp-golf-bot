@@ -329,12 +329,12 @@ module.exports = function(client, sql, routes) {
               }
               let currentIndex = clientMessage.pIndex;
               for (i=0; i< orderStr.length; i++) {
-                for (p=0; p < clientMessage.player.length; p++) {
-                  if (clientMessage.player[p].orderOfPlay === orderStr.charAt(i)) {
-                    clientMessage.pIndex = p;
+                for (pl=0; p < clientMessage.player.length; pl++) {
+                  if (clientMessage.player[pl].orderOfPlay === orderStr.charAt(i)) {
+                    clientMessage.pIndex = pl;
                     foundPlayer = findPlayer(clientMessage); 
                     if (foundPlayer) {
-                      translate += clientMessage.player[p].playerRow.first.charAt(0) + '. ' + clientMessage.player[p].playerRow.last + " | ";
+                      translate += clientMessage.player[pl].playerRow.first.charAt(0) + '. ' + clientMessage.player[pl].playerRow.last + " | ";
                     }
                   }  
                 }
