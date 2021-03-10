@@ -321,7 +321,7 @@ module.exports = function(client, sql, routes) {
                 if (translate !== '') {translate += ' '};
                 translate += 'Scores ';
                 for (pl=0; pl < clientMessage.player.length; pl++) {
-                  clientMessage.player[pl].score = parseInt(scoreStr.charAt(i));
+                  clientMessage.player[pl].score = parseInt(scoreStr.charAt(pl));
                   clientMessage.pIndex = pl;
                   foundPlayer = findPlayer(clientMessage); 
                   if (foundPlayer) {
