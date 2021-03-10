@@ -10,6 +10,7 @@ module.exports = function(client, sql, routes) {
     var golfDraw = [];
     var displayMessages = [];
     var clientMessageModel = {
+        user: '', 
         match: 0,
         player: [{
             hole: 0,
@@ -45,8 +46,7 @@ module.exports = function(client, sql, routes) {
         action: ''
     }
 
-    let clientMessage = JSON.parse(JSON.stringify((clientMessageModel)));
-
+    let spotters = [];
     // We need this to build our post string
     var http = require('http');
     var twilio = require('twilio');
@@ -158,99 +158,8 @@ module.exports = function(client, sql, routes) {
         client.on('disconnect', function() {
             console.log(client.id + ' has disconnected from the server');
         });
-                
-        client.on('getTopTracerAPI', function(options) {
-       //     console.log(options.host + "-" + options.path);
-            var toptracerClient = request.createClient(options.host);
-
-            toptracerClient.get(options.path, function(err, res, body) {
-                //console.log(body);
-               client.emit('r-TopTracerAPI', body, options);
-            });
-            
-        });
 
         var checkIsRunning =  null;
-
-        client.on('postTopTracerShot', function(shotdata, options) {
-            if (shotdata.stats.landing_angle != undefined) {
-              shotdata.stats.landing_angle = shotdata.stats.landing_angle.toFixed(1);
-            }
-            if (shotdata.stats.ball_speed != undefined) {
-                shotdata.stats.ball_speed = shotdata.stats.ball_speed.toFixed(1);
-            }
-            if (shotdata.stats.flat_carry != undefined) {
-                shotdata.stats.flat_carry = shotdata.stats.flat_carry.toFixed(1);
-            }
-            if (shotdata.stats.curve != undefined) {
-                shotdata.stats.curve = shotdata.stats.curve.toFixed(1);
-            }
-          //  console.log ('height before=' + shotdata.stats.height);
-            shotdata.stats.height = shotdata.stats.height - config.cameraheight;
-            shotdata.stats.height = shotdata.stats.height.toFixed(1)
-         //   console.log ('height after=' + shotdata.stats.height);
-            if (shotdata.stats.launch_angle != undefined) {
-                 shotdata.stats.launch_angle = shotdata.stats.launch_angle.toFixed(1);
-            }
-            
-            if (shotdata.stats.hang_time != undefined) {
-                shotdata.stats.hang_time = shotdata.stats.hang_time.toFixed(1);
-            }
-            if (options.playerid != undefined) {
-                console.log('options.playerid == ' + options.playerid);
-                shotdata.stats.MSTID = options.playerid.toString();
-            }
-            else
-            {
-                console.log('options.playerid == undefined');
-                options.playerid = 0;
-            }
-            shotdata.stats.hole = options.bay_id.toString();
-            shotdata.stats.round = parseInt(options.roundNo);
-            shotdata.stats.pollstatus = "hit";
-
-            if (options.playerid > -1)
-            {
-                if (config.testmode != 1 && options.postsql == true)
-                {
-                    clearTimeout(checkIsRunning);
-                    checkIsRunning = setTimeout(function () {
-                        console.log('insert SQL');
-                        new sql.Request()
-                            .input('Round', sql.Int, options.roundNo)
-                            .input('TournamentID', sql.Int, tournID)
-                            .input('Round', sql.Int, options.roundNo)
-                            .input('Hole', sql.Int, options.bay_id)
-                            .input('MSTID', sql.Int, options.playerid)
-                            .input('LandingAngle', sql.Real, shotdata.stats.landing_angle)
-                            .input('BallSpeed', sql.Real, shotdata.stats.ball_speed)
-                            .input('FlatCarry', sql.Real, shotdata.stats.flat_carry)
-                            .input('Curve', sql.Real, shotdata.stats.curve)
-                            .input('Height', sql.Real, shotdata.stats.height)
-                            .input('HangTime', sql.Real, shotdata.stats.hang_time)
-                            .input('LaunchAngle', sql.Real, shotdata.stats.launch_angle)
-                            .input('ShotNumber', sql.Int, 1)
-                            .input('ShotID', sql.Int, 999)
-                            .input('remove', sql.Int, 0)
-                        // .output('output_parameter', sql.VarChar(50))
-                            .execute('addTraceStats', (err, result) => {
-                                // ... error checks
-                        
-                                //console.dir(result)
-                            });  
-                            options.optionid = 5;  //shot complete 
-                            PostTrace(tournID, options.roundNo, shotdata);
-                    }, 500);
-                  
-                }
-            }
-            else
-            {
-                console.log('error: playerid=0 ');
-            }
-            client.emit('r-postTopTracerShot', shotdata, options);
-            client.broadcast.emit('r-postTopTracerShot', shotdata, options);
-        });
 
         client.on('getDrawOrder', function(round) {
             console.log('getDrawOrder: round' + round);
@@ -293,9 +202,18 @@ module.exports = function(client, sql, routes) {
             client.emit('r-getProjectConfig', config);
         });
 
-        client.on('changePlayer', function(player) {
-            client.broadcast.emit('r-changePlayer', player);
-        });
+        function findSpotter(fromStr) {
+          for (i=0; i< spotters.length; i++) {
+            if (spotters[i].user === req.body.From) {
+              return spotters[i];
+            }
+          } 
+
+          let clientMessage = JSON.parse(JSON.stringify((clientMessageModel)));
+          clientMessage.user = fromStr;
+          spotters.push(clientMessage);
+          return clientMessage;
+        } 
 
         routes.post("/webhook", (req, res) => {
             //const attributes = req.body.message;
@@ -303,12 +221,14 @@ module.exports = function(client, sql, routes) {
             // let reqText = req.body.queryResult.queryText;
             console.log('response: ' + JSON.stringify(req.body));
             // console.log('in app.js' + req.body);
-            clientMessage = translateMessage(req.body.Body);
+            // req.body.From
+            clientMessage = findSpotter(req.body.From);
+            clientMessage = translateMessage(req.body.Body, clientMessage);
             if (clientMessage.action === 'reply') {
                 twilio_client.messages.create({
                   from: 'whatsapp:+14155238886',
                   body: clientMessage.translatedMessage + ' y or n ?',
-                  to: 'whatsapp:+447507467702'
+                  to: req.body.From
                 }).then(function(message) {
                   // When we get a response from Twilio, respond to the HTTP POST request
                   res.send('Message is inbound!');
@@ -321,14 +241,16 @@ module.exports = function(client, sql, routes) {
 
         routes.post("/testwebhook", (req, res) => {
             //const attributes = req.body.message;
+            testFrom = 'whatsapp:+447507467702';
             console.log(req.body.message);
             // console.log('in app.js' + req.body);
-            clientMessage = translateMessage(req.body.message);
+            clientMessage = findSpotter(testFrom);
+            clientMessage = translateMessage(req.body.message, clientMessage);
             if (clientMessage.action === 'reply') {
                 twilio_client.messages.create({
                   from: 'whatsapp:+14155238886',
                   body: clientMessage.translatedMessage + ' y or n ?',
-                  to: 'whatsapp:+447507467702'
+                  to: testFrom
                 }).then(function(message) {
                   // When we get a response from Twilio, respond to the HTTP POST request
                   res.send('Message is inbound!');
@@ -339,7 +261,7 @@ module.exports = function(client, sql, routes) {
             }
           });
 
-          function translateMessage(incoming) {
+          function translateMessage(incoming, clientMessage) {
             let translate = '';
             let foundMatch = false;
             let foundPlayer = false;
@@ -386,6 +308,14 @@ module.exports = function(client, sql, routes) {
               clientMessage.player[clientMessage.pIndex].shot = extractNumber(place[1]);
               if (translate !== '') {translate += ' '};
               translate += 'shot ' + clientMessage.player[clientMessage.pIndex].shot;
+              clientMessage.action = 'reply';
+            }
+            if (incoming.includes('i')) {
+              let place = incoming.split('i');
+              if (translate !== '') {translate += ' '};
+              clientMessage.player[clientMessage.pIndex].score = extractNumber(place[1]);
+              if (translate !== '') {translate += ' '};
+              translate += 'score ' + clientMessage.player[clientMessage.pIndex].score;
               clientMessage.action = 'reply';
             }
             clientMessage.translatedMessage = '';
