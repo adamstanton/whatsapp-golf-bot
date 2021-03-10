@@ -289,7 +289,7 @@ module.exports = function(client, sql, routes) {
               if (translate !== '') {translate += ' '};
               translate +=  clientMessage.player[clientMessage.pIndex].playerRow.first.charAt(0) + '. ' + clientMessage.player[clientMessage.pIndex].playerRow.last; 
               // translate +=  'Lee' + '. ' + 'Westwood'; 
-              foundPlayer = true;
+              // foundPlayer = true;
               //  ******************************************
               clientMessage.action = 'reply';
             }
@@ -318,6 +318,22 @@ module.exports = function(client, sql, routes) {
               translate += 'score ' + clientMessage.player[clientMessage.pIndex].score;
               clientMessage.action = 'reply';
             }
+            if (incoming.includes('o')) {
+              let place = incoming.split('o');
+              if (translate !== '') {translate += ' '};
+              orderStr = extractNumber(place[1]).toString();
+              if (translate !== '') {translate += ' '};
+              translate += 'order ';
+              let currentIndex = clientMessage.pIndex;
+              for (i=0; i< orderStr.length; i++) {
+                clientMessage.pIndex = i;
+                clientMessage.player[i].orderOfPlay = orderStr.charAt(i);
+                foundPlayer = findPlayer(clientMessage);
+                translate += clientMessage.player[i].playerRow.first.charAt(0) + '. ' + clientMessage.player[i].playerRow.last + " | "; 
+              }
+              clientMessage.pIndex = currentIndex; 
+              clientMessage.action = 'reply';
+            }
             clientMessage.translatedMessage = '';
             if (!foundMatch) {
               clientMessage.translatedMessage = 'match ' + clientMessage.match + ': ';
@@ -340,15 +356,15 @@ module.exports = function(client, sql, routes) {
         function findPlayer(clientMessage) {
             // console.log ('in findplayer:clientMessage'  + (JSON.stringify((clientMessage))));
             currentRnd = parseInt(golfDraw.event.tournament.currentround);
-            for (i=0; i < golfDraw.event.players.player.length; i++) {
-                playerelement = golfDraw.event.players.player[i];
+            for (p=0; p < golfDraw.event.players.player.length; p++) {
+                playerelement = golfDraw.event.players.player[p];
                 if (currentRnd === 1) {
-                  var roundelement = golfDraw.event.players.player[i].round;
+                  var roundelement = golfDraw.event.players.player[p].round;
                 } else {
-                  var roundelement = golfDraw.event.players.player[i].round[currentRnd - 1];
+                  var roundelement = golfDraw.event.players.player[p].round[currentRnd - 1];
                 }
                 
-                var playerelement = golfDraw.event.players.player[i];
+                var playerelement = golfDraw.event.players.player[p];
                 if(parseInt(roundelement.matchnumber) === clientMessage.match && parseInt(roundelement.orderinmatch) === (clientMessage.pIndex + 1)) {
                    // console.log ('in findplayer:'  + golfDraw.length);
                     clientMessage.player[clientMessage.pIndex].roundRow = roundelement;
