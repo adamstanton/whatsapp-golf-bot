@@ -359,7 +359,7 @@ module.exports = function(client, sql, routes) {
               if (translate !== '') {translate += ' '};
               orderStr = extractNumber(place[1]).toString();
               if (translate !== '') {translate += ' '};
-              translate += 'order ';
+              translate += 'order of play \n';
               for (i=0; i< orderStr.length; i++) {
                 clientMessage.player[i].orderOfPlay = parseInt(orderStr.charAt(i));
               }
