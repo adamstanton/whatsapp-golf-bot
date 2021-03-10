@@ -274,8 +274,8 @@ module.exports = function(client, sql, routes) {
             }
 
             if (incoming.includes('help')) {
-              clientMessage.translatedMessage = 'p = player | m = match | h = hole | s = shot | o=order of play | i = in (score) /n';
-              clientMessage.translatedMessage += 'add number after each or ? for question i.e.  m3p2 is Match 3 Player 2.  m3p? would reply list of players in match 3'
+              clientMessage.translatedMessage = 'p = player | m = match | h = hole | s = shot | o=order of play | i = in (score) \n';
+              clientMessage.translatedMessage += 'add number after each or ? for question \n i.e.  m3p2 is Match 3 Player 2.  m3p? would reply list of players in match 3'
               clientMessage.action = 'reply';
               clientMessage.questionMessage = '';
               return clientMessage;
@@ -341,7 +341,7 @@ module.exports = function(client, sql, routes) {
                   clientMessage.pIndex = pl;
                   foundPlayer = findPlayer(clientMessage); 
                   if (foundPlayer) {
-                    translate += clientMessage.player[pl].playerRow.first.charAt(0) + '. ' + clientMessage.player[pl].playerRow.last + ' ' + clientMessage.player[pl].score + " | ";
+                    translate += clientMessage.player[pl].playerRow.first.charAt(0) + '. ' + clientMessage.player[pl].playerRow.last + ' ' + clientMessage.player[pl].score + " | \n";
                   }
                 }
                 clientMessage.pIndex = currentIndex;
@@ -365,7 +365,7 @@ module.exports = function(client, sql, routes) {
                     clientMessage.pIndex = pl;
                     foundPlayer = findPlayer(clientMessage); 
                     if (foundPlayer) {
-                      translate += clientMessage.player[pl].playerRow.first.charAt(0) + '. ' + clientMessage.player[pl].playerRow.last + " | ";
+                      translate += clientMessage.player[pl].playerRow.first.charAt(0) + '. ' + clientMessage.player[pl].playerRow.last + " | \n";
                     }
                   }  
                 }
@@ -432,7 +432,7 @@ module.exports = function(client, sql, routes) {
               var playerelement = golfDraw.event.players.player[p];
               if( parseInt(roundelement.matchnumber) === match ) {
                 var index = parseInt(roundelement.orderinmatch)
-                rtnStr[index] = (parseInt(roundelement.orderinmatch)).toString() +  ') ' + playerelement.first.charAt(0) + '. ' + playerelement.last + ' | ';
+                rtnStr[index] = (parseInt(roundelement.orderinmatch)).toString() +  ') ' + playerelement.first.charAt(0) + '. ' + playerelement.last + ' | \n';
               }
           }
           var tmpStr = '';
