@@ -28,6 +28,16 @@ h3 {
     color:red;
 }
 
+textarea {
+    width: 700px;
+    font-family: Monaco, monospace, sans-serif;
+    font-size:14px;
+    padding:10px;
+    background-color:#232323;
+    border:1px #fff solid;
+    margin-bottom: 10px;
+}
+
 pre {
     font-family: Monaco, monospace, sans-serif;
     font-size:12px;

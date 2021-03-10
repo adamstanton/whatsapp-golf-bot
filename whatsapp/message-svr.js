@@ -267,7 +267,11 @@ module.exports = function(client, sql, routes) {
             let foundPlayer = false;
             let foundHole = false;
             incoming = incoming.toLowerCase();
-            if (incoming.includes('y') || incoming.includes('n') || incoming.charAt(0) === ',' || incoming.charAt(0) === '.' )  { 
+            if (incoming.includes('y') || incoming.includes('n') )  { 
+              clientMessage.action = 'display';
+              return clientMessage;
+            }
+            if (incoming.charAt(0) === ',' || incoming.charAt(0) === '.' )  { 
               clientMessage.translatedMessage = incoming;
               clientMessage.action = 'display';
               return clientMessage;

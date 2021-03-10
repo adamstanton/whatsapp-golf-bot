@@ -285,3 +285,16 @@ table {
   font-size: 28px;
   text-align: center;
 }
+
+textarea {
+  width: 850px;
+  height: 850px;
+  font-family: Monaco, monospace, sans-serif;
+  font-size:22px;
+  padding:10px;
+  color: black;
+  background-color:#cfcfcf;
+  border:1px #fff solid;
+  margin-bottom: 10px;
+  opacity: 85%;
+}
