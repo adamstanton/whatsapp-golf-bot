@@ -316,6 +316,8 @@ module.exports = function(client, sql, routes) {
               scoreStr = extractNumber(place[1]).toString();;
               if (scoreStr.length < 3 ) {
                 clientMessage.player[clientMessage.pIndex].score = parseInt(scoreStr);
+                if (translate !== '') {translate += ' '};
+                translate += 'score ' + clientMessage.player[clientMessage.pIndex].score;
               } else if (scoreStr.length === 3) {
                 let currentIndex = clientMessage.pIndex;
                 if (translate !== '') {translate += ' '};
@@ -331,8 +333,6 @@ module.exports = function(client, sql, routes) {
                 clientMessage.pIndex = currentIndex;
               }
               
-              if (translate !== '') {translate += ' '};
-              translate += 'score ' + clientMessage.player[clientMessage.pIndex].score;
               clientMessage.action = 'reply';
             }
             if (incoming.includes('o')) {
