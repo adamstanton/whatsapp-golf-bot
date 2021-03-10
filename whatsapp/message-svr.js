@@ -324,12 +324,20 @@ module.exports = function(client, sql, routes) {
               orderStr = extractNumber(place[1]).toString();
               if (translate !== '') {translate += ' '};
               translate += 'order ';
+              for (i=0; i< orderStr.length; i++) {
+                clientMessage.player[i].orderOfPlay = orderStr.charAt(i);
+              }
               let currentIndex = clientMessage.pIndex;
               for (i=0; i< orderStr.length; i++) {
-                clientMessage.pIndex = i;
-                clientMessage.player[i].orderOfPlay = orderStr.charAt(i);
-                foundPlayer = findPlayer(clientMessage);
-                translate += clientMessage.player[i].playerRow.first.charAt(0) + '. ' + clientMessage.player[i].playerRow.last + " | "; 
+                for (p=0; p < clientMessage.player.length; p++) {
+                  if (clientMessage.player[p].orderOfPlay === orderStr.charAt(i)) {
+                    clientMessage.pIndex = p;
+                    foundPlayer = findPlayer(clientMessage); 
+                    if (foundPlayer) {
+                      translate += clientMessage.player[i].playerRow.first.charAt(0) + '. ' + clientMessage.player[i].playerRow.last + " | ";
+                    }
+                  }  
+                }
               }
               clientMessage.pIndex = currentIndex; 
               clientMessage.action = 'reply';
