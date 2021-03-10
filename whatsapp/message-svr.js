@@ -334,7 +334,7 @@ module.exports = function(client, sql, routes) {
                     clientMessage.pIndex = p;
                     foundPlayer = findPlayer(clientMessage); 
                     if (foundPlayer) {
-                      translate += clientMessage.player[i].playerRow.first.charAt(0) + '. ' + clientMessage.player[i].playerRow.last + " | ";
+                      translate += clientMessage.player[p].playerRow.first.charAt(0) + '. ' + clientMessage.player[p].playerRow.last + " | ";
                     }
                   }  
                 }
