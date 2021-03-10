@@ -268,15 +268,15 @@ module.exports = function(client, sql, routes) {
             let foundHole = false;
             incoming = incoming.toLowerCase();
             if (incoming.includes('y') || incoming.includes('n') || incoming.charAt(0) === ',' || incoming.charAt(0) === '.' )  { 
-              clientMessage.message = incoming;
+              clientMessage.translatedMessage = incoming;
               clientMessage.action = 'display';
               return clientMessage;
             }
 
             if (incoming.includes('help')) {
-              clientMessage.message = 'p = player | m = match | h = hole | s = shot | o=order of play | i = in (score) /n';
-              clientMessage.message += 'add number after each or ? for question i.e.  m3p2 is Match 3 Player 2.  m3p? would reply list of players in match 3'
-              clientMessage.action = 'display';
+              clientMessage.translatedMessage = 'p = player | m = match | h = hole | s = shot | o=order of play | i = in (score) /n';
+              clientMessage.translatedMessage += 'add number after each or ? for question i.e.  m3p2 is Match 3 Player 2.  m3p? would reply list of players in match 3'
+              clientMessage.action = 'reply';
               return clientMessage;
             }
 
@@ -292,8 +292,8 @@ module.exports = function(client, sql, routes) {
             if (incoming.includes('p')) {
               if (incoming.includes('?')) {
                 //query players 
-                clientMessage.message = findPlayersInMatch(clientMessage.match);
-                clientMessage.action = 'display';
+                clientMessage.translatedMessage = findPlayersInMatch(clientMessage.match);
+                clientMessage.action = 'reply';
                 return clientMessage;
               } else {
                 let place = incoming.split('p');
