@@ -344,6 +344,7 @@ module.exports = function(client, sql, routes) {
             let foundMatch = false;
             let foundPlayer = false;
             let foundHole = false;
+            incoming = incoming.toLowerCase();
             if (incoming.includes('y') || incoming.includes('n') || incoming.includes('*')) { 
               clientMessage.message = incoming;
               clientMessage.action = 'display';
