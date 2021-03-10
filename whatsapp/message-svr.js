@@ -42,7 +42,7 @@ module.exports = function(client, sql, routes) {
         }],
         pIndex: 0, // Ply Index above. 
         translatedMessage: '',
-        message: '',
+        questionMessage: '',
         action: ''
     }
 
@@ -227,7 +227,7 @@ module.exports = function(client, sql, routes) {
             if (clientMessage.action === 'reply') {
                 twilio_client.messages.create({
                   from: 'whatsapp:+14155238886',
-                  body: clientMessage.translatedMessage + ' y or n ?',
+                  body: clientMessage.translatedMessage + clientMessage.questionMessage,
                   to: req.body.From
                 }).then(function(message) {
                   // When we get a response from Twilio, respond to the HTTP POST request
@@ -249,7 +249,7 @@ module.exports = function(client, sql, routes) {
             if (clientMessage.action === 'reply') {
                 twilio_client.messages.create({
                   from: 'whatsapp:+14155238886',
-                  body: clientMessage.translatedMessage + ' y or n ?',
+                  body: clientMessage.translatedMessage + clientMessage.questionMessage,
                   to: testFrom
                 }).then(function(message) {
                   // When we get a response from Twilio, respond to the HTTP POST request
@@ -277,6 +277,7 @@ module.exports = function(client, sql, routes) {
               clientMessage.translatedMessage = 'p = player | m = match | h = hole | s = shot | o=order of play | i = in (score) /n';
               clientMessage.translatedMessage += 'add number after each or ? for question i.e.  m3p2 is Match 3 Player 2.  m3p? would reply list of players in match 3'
               clientMessage.action = 'reply';
+              clientMessage.questionMessage = '';
               return clientMessage;
             }
 
@@ -294,6 +295,7 @@ module.exports = function(client, sql, routes) {
                 //query players 
                 clientMessage.translatedMessage = findPlayersInMatch(clientMessage.match);
                 clientMessage.action = 'reply';
+                clientMessage.questionMessage = '';
                 return clientMessage;
               } else {
                 let place = incoming.split('p');
@@ -388,6 +390,7 @@ module.exports = function(client, sql, routes) {
         
             if (clientMessage.translatedMessage !== '') {clientMessage.translatedMessage += ' '};
             clientMessage.translatedMessage += translate;
+            clientMessage.questionMessage = ' y or n ?';
             return clientMessage;
         }
         
@@ -429,7 +432,7 @@ module.exports = function(client, sql, routes) {
               var playerelement = golfDraw.event.players.player[p];
               if( parseInt(roundelement.matchnumber) === match ) {
                 var index = parseInt(roundelement.orderinmatch)
-                rtnStr[index] = (parseInt(roundelement.orderinmatch)).toString() +  ') ' + playerelement.first.charAt(0) + '. ' + playerelement.last;
+                rtnStr[index] = (parseInt(roundelement.orderinmatch)).toString() +  ') ' + playerelement.first.charAt(0) + '. ' + playerelement.last + ' | ';
               }
           }
           var tmpStr = '';
