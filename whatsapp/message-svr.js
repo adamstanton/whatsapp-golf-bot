@@ -329,7 +329,7 @@ module.exports = function(client, sql, routes) {
               }
               let currentIndex = clientMessage.pIndex;
               for (i=0; i< orderStr.length; i++) {
-                for (pl=0; p < clientMessage.player.length; pl++) {
+                for (pl=0; pl < clientMessage.player.length; pl++) {
                   if (clientMessage.player[pl].orderOfPlay === orderStr.charAt(i)) {
                     clientMessage.pIndex = pl;
                     foundPlayer = findPlayer(clientMessage); 
