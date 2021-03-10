@@ -364,7 +364,7 @@ module.exports = function(client, sql, routes) {
               clientMessage.pIndex = (extractNumber(place[1]) - 1);
               foundPlayer = findPlayer(clientMessage);
               if (translate !== '') {translate += ' '};
-              translate +=  clientMessage.player[clientMessage.pIndex].playerRow.first.charAt(0) + '. ' + clientMessage.player[clientMessage.pIndex].playerRow.first; 
+              translate +=  clientMessage.player[clientMessage.pIndex].playerRow.first.charAt(0) + '. ' + clientMessage.player[clientMessage.pIndex].playerRow.last; 
               // translate +=  'Lee' + '. ' + 'Westwood'; 
               foundPlayer = true;
               //  ******************************************
