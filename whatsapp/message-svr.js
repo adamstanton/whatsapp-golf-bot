@@ -339,7 +339,7 @@ module.exports = function(client, sql, routes) {
               } else if (scoreStr.length === 3) {
                 let currentIndex = clientMessage.pIndex;
                 if (translate !== '') {translate += ' '};
-                translate += 'Scores ';
+                translate += 'Scores \n';
                 for (pl=0; pl < clientMessage.player.length; pl++) {
                   clientMessage.player[pl].score = parseInt(scoreStr.charAt(pl));
                   clientMessage.pIndex = pl;
