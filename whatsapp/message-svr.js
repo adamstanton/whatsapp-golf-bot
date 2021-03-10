@@ -325,12 +325,12 @@ module.exports = function(client, sql, routes) {
               if (translate !== '') {translate += ' '};
               translate += 'order ';
               for (i=0; i< orderStr.length; i++) {
-                clientMessage.player[i].orderOfPlay = orderStr.charAt(i);
+                clientMessage.player[i].orderOfPlay = parseInt(orderStr.charAt(i));
               }
               let currentIndex = clientMessage.pIndex;
               for (i=0; i< orderStr.length; i++) {
                 for (pl=0; pl < clientMessage.player.length; pl++) {
-                  if (clientMessage.player[pl].orderOfPlay === orderStr.charAt(i)) {
+                  if (clientMessage.player[pl].orderOfPlay === (i + 1)) {
                     clientMessage.pIndex = pl;
                     foundPlayer = findPlayer(clientMessage); 
                     if (foundPlayer) {
