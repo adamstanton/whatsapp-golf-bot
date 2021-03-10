@@ -313,7 +313,24 @@ module.exports = function(client, sql, routes) {
             if (incoming.includes('i')) {
               let place = incoming.split('i');
               if (translate !== '') {translate += ' '};
-              clientMessage.player[clientMessage.pIndex].score = extractNumber(place[1]);
+              scoreStr = extractNumber(place[1]).toString();;
+              if (scoreStr.length < 3 ) {
+                clientMessage.player[clientMessage.pIndex].score = parseInt(scoreStr);
+              } else if (scoreStr.length === 3) {
+                let currentIndex = clientMessage.pIndex;
+                if (translate !== '') {translate += ' '};
+                translate += 'Scores ';
+                for (pl=0; pl < clientMessage.player.length; pl++) {
+                  clientMessage.player[pl].score = parseInt(scoreStr.charAt(i));
+                  clientMessage.pIndex = pl;
+                  foundPlayer = findPlayer(clientMessage); 
+                  if (foundPlayer) {
+                    translate += clientMessage.player[pl].playerRow.first.charAt(0) + '. ' + clientMessage.player[pl].playerRow.last + ' ' + clientMessage.player[pl].score + " | ";
+                  }
+                }
+                clientMessage.pIndex = currentIndex;
+              }
+              
               if (translate !== '') {translate += ' '};
               translate += 'score ' + clientMessage.player[clientMessage.pIndex].score;
               clientMessage.action = 'reply';
