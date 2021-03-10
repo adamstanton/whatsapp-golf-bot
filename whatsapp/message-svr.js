@@ -349,6 +349,7 @@ module.exports = function(client, sql, routes) {
                   }
                 }
                 clientMessage.pIndex = currentIndex;
+                foundPlayer = true;
               }
               
               clientMessage.action = 'reply';
