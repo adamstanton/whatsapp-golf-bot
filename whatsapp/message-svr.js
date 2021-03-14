@@ -15,6 +15,7 @@ module.exports = function(client, sql, routes) {
         player: [{
             hole: 0,
             shot: 0,
+            shotStr: '',
             in: 0,
             orderOfPlay: 0,
             leaderboardRow: {},     
@@ -22,6 +23,7 @@ module.exports = function(client, sql, routes) {
         {
         hole: 0,
         shot: 0,
+        shotStr: '',
         in: 0,
         orderOfPlay: 0,
         leaderboardRow: {},     
@@ -29,6 +31,7 @@ module.exports = function(client, sql, routes) {
         {
         hole: 0,
         shot: 0,
+        shotStr: '',
         in: 0,
         orderOfPlay: 0,
         leaderboardRow: {},     
@@ -36,6 +39,7 @@ module.exports = function(client, sql, routes) {
         {
         hole: 0,
         shot: 0,
+        shotStr: '',
         in: 0,
         orderOfPlay: 0,
         leaderboardRow: {},     
@@ -53,7 +57,7 @@ module.exports = function(client, sql, routes) {
     
     // Load configuration information from system environment variables.
     var TWILIO_ACCOUNT_SID = 'ACa21a7d6a8d37d6806cf26b4dbdf36099',
-    TWILIO_AUTH_TOKEN = '0f5d3915cfde5734f6468b768a7bd23f',
+    TWILIO_AUTH_TOKEN = 'f3103ce3477edc2ff940d6b0b546ceb4',
     TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER;
 
     // Create an authenticated client to access the Twilio REST API
@@ -202,7 +206,7 @@ module.exports = function(client, sql, routes) {
             client.emit('r-getProjectConfig', config);
         });
 
-        function findSpotter(fromStr) {
+        function findSpotter(fromStr, fromName) {
           for (i=0; i< spotters.length; i++) {
             if (spotters[i].user === fromStr) {
               return spotters[i];
@@ -211,6 +215,7 @@ module.exports = function(client, sql, routes) {
 
           let clientMessage = JSON.parse(JSON.stringify((clientMessageModel)));
           clientMessage.user = fromStr;
+          clientMessage.username = fromName;
           spotters.push(clientMessage);
           return clientMessage;
         } 
@@ -222,7 +227,7 @@ module.exports = function(client, sql, routes) {
             console.log('response: ' + JSON.stringify(req.body));
             // console.log('in app.js' + req.body);
             // req.body.From
-            clientMessage = findSpotter(req.body.From);
+            clientMessage = findSpotter(req.body.From, req.body.ProfileName);
             clientMessage = translateMessage(req.body.Body, clientMessage);
             if (clientMessage.action === 'reply') {
                 twilio_client.messages.create({
@@ -234,8 +239,8 @@ module.exports = function(client, sql, routes) {
                   res.send('Message is inbound!');
                 });
             } else if (clientMessage.action === 'display') {
-              displayMessages.push(clientMessage.translatedMessage);
-              client.broadcast.emit('r-translatedReply', clientMessage.translatedMessage);
+              displayMessages.push(clientMessage.username + ': ' + clientMessage.translatedMessage);
+              client.broadcast.emit('r-translatedReply', clientMessage.username + ': ' + clientMessage.translatedMessage);
             }
         });
 
@@ -244,7 +249,7 @@ module.exports = function(client, sql, routes) {
             testFrom = 'whatsapp:+447507467702';
             console.log(req.body.message);
             // console.log('in app.js' + req.body);
-            clientMessage = findSpotter(testFrom);
+            clientMessage = findSpotter(testFrom, 'Adam UK');
             clientMessage = translateMessage(req.body.message, clientMessage);
             if (clientMessage.action === 'reply') {
                 twilio_client.messages.create({
@@ -323,9 +328,16 @@ module.exports = function(client, sql, routes) {
             if (incoming.includes('s')) {
               let place = incoming.split('s');
               if (translate !== '') {translate += ' '};
-              clientMessage.player[clientMessage.pIndex].shot = extractNumber(place[1]);
-              if (translate !== '') {translate += ' '};
-              translate += 'shot ' + clientMessage.player[clientMessage.pIndex].shot;
+              if (isNumeric(place[1].charAt(0))) {
+                clientMessage.player[clientMessage.pIndex].shot = extractNumber(place[1]);
+                if (translate !== '') {translate += ' '};
+                translate += 'shot ' + clientMessage.player[clientMessage.pIndex].shot;
+              } else {
+                //is char i.e  e=eagle / b=birdie / y = bogey 
+                clientMessage.player[clientMessage.pIndex].shotStr = translateShotChar(place[1].charAt(0));
+                if (translate !== '') {translate += ' '};
+                translate += clientMessage.player[clientMessage.pIndex].shotStr;
+              }
               clientMessage.action = 'reply';
             }
             if (incoming.includes('i')) {
@@ -348,6 +360,7 @@ module.exports = function(client, sql, routes) {
                     translate += clientMessage.player[pl].playerRow.first.charAt(0) + '. ' + clientMessage.player[pl].playerRow.last + ' ' + clientMessage.player[pl].score + " \n";
                   }
                 }
+                clientMessage.player[clientMessage.pIndex].hole++;
                 clientMessage.pIndex = currentIndex;
                 foundPlayer = true;
               }
@@ -399,6 +412,32 @@ module.exports = function(client, sql, routes) {
             return clientMessage;
         }
         
+        function translateShotChar(shotChar) {
+          switch (shotChar) {
+            case 'e':
+              return 'for eagle';
+              break;
+            case 'b':
+              return 'for birdie';
+              break;
+            case 'p':
+              return 'for par';
+              break;
+            case 'y':
+              return 'for bogey';
+              break;
+            case 'd':
+              return 'for double';
+              break;
+            case 't':
+              return 'for triple';
+              break;
+            case 'q':
+              return 'for quad';
+              break;
+          }
+        }
+
         function findPlayer(clientMessage) {
             // console.log ('in findplayer:clientMessage'  + (JSON.stringify((clientMessage))));
             currentRnd = parseInt(golfDraw.event.tournament.currentround);
