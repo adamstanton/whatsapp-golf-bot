@@ -449,12 +449,14 @@ module.exports = function(client, sql, routes) {
                   var roundelement = golfDraw.event.players.player[p].round[currentRnd - 1];
                 }
                 
-                var playerelement = golfDraw.event.players.player[p];
-                if(parseInt(roundelement.matchnumber) === clientMessage.match && parseInt(roundelement.orderinmatch) === (clientMessage.pIndex + 1)) {
-                   // console.log ('in findplayer:'  + golfDraw.length);
-                    clientMessage.player[clientMessage.pIndex].roundRow = roundelement;
-                    clientMessage.player[clientMessage.pIndex].playerRow = playerelement;
-                    return true;
+                if (roundelement !== undefined) {
+                  var playerelement = golfDraw.event.players.player[p];
+                  if(parseInt(roundelement.matchnumber) === clientMessage.match && parseInt(roundelement.orderinmatch) === (clientMessage.pIndex + 1)) {
+                    // console.log ('in findplayer:'  + golfDraw.length);
+                      clientMessage.player[clientMessage.pIndex].roundRow = roundelement;
+                      clientMessage.player[clientMessage.pIndex].playerRow = playerelement;
+                      return true;
+                  }
                 }
             }
             return false;
