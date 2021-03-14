@@ -57,7 +57,7 @@ module.exports = function(client, sql, routes) {
     
     // Load configuration information from system environment variables.
     var TWILIO_ACCOUNT_SID = 'ACa21a7d6a8d37d6806cf26b4dbdf36099',
-    TWILIO_AUTH_TOKEN = 'f3103ce3477edc2ff940d6b0b546ceb4',
+    TWILIO_AUTH_TOKEN = 'c840defebc320bc4f08e4143647ef012',
     TWILIO_PHONE_NUMBER = process.env.TWILIO_PHONE_NUMBER;
 
     // Create an authenticated client to access the Twilio REST API
